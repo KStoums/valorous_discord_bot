@@ -1,0 +1,5 @@
+.idea/
+./*.iml
+/run.sh
+/config/config.json
+/.env

@@ -1,0 +1,62 @@
+package main
+
+import (
+	"github.com/bwmarrin/discordgo"
+	"github.com/goroutine/template/config"
+	"github.com/goroutine/template/database"
+	"github.com/goroutine/template/events"
+	"github.com/goroutine/template/events/ready"
+	"github.com/goroutine/template/log"
+	"github.com/goroutine/template/utils"
+	"github.com/goroutine/template/utils/environnement"
+	_ "github.com/joho/godotenv/autoload" // Load .env file
+	i18n "github.com/kaysoro/discordgo-i18n"
+	"os"
+	"os/signal"
+	"syscall"
+)
+
+func main() {
+	environnement.CheckEnvs() // Check if all envs are set
+
+	log.Logger.Info("Currently running commit: " + utils.GetCommit())
+	if err := i18n.LoadBundle(discordgo.French, "./locales/fr.json"); err != nil {
+		log.Logger.Fatal(err)
+	}
+
+	if err := database.StartMariaClient(); err != nil {
+		log.Logger.Fatal(err)
+	}
+	db, err := database.Maria.DB()
+	if err != nil {
+		log.Logger.Fatal("Could not get Maria DB: ", err)
+	}
+	defer db.Close()
+
+	config.LoadConfig()
+
+	discord, err := discordgo.New("Bot " + environnement.GetToken())
+	if err != nil {
+		log.Logger.Fatal(err)
+	}
+
+	discord.Identify.Intents = discordgo.IntentsAll
+
+	discord.AddHandlerOnce(ready.ReadyEvent)
+	addHandlers(discord, events.InteractionCreateEvent)
+
+	if err = discord.Open(); err != nil {
+		log.Logger.Fatal(err)
+	}
+	defer discord.Close()
+
+	sc := make(chan os.Signal, 1)
+	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
+	<-sc
+}
+
+func addHandlers(s *discordgo.Session, handlers ...interface{}) {
+	for _, handler := range handlers {
+		s.AddHandler(handler)
+	}
+}

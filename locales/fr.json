@@ -1,0 +1,8 @@
+{
+  "hello-world": [
+    "coucou toi {{ .name }}!",
+    "bonjour toi {{ .name }}!"
+  ],
+  "dont-existing": "I don't exist",
+  "member-count-channel-name": "Membres: {{ .count }}"
+}
