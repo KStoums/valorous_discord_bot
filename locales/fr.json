@@ -1,7 +1,7 @@
 {
   "event": {
     "member_join_title": "Bienvenue à toi ",
-    "member_join_description": "Nous sommes désormais "
+    "member_join_description": "Nous sommes désormais **{{ .memberCount }}** membres \nsur le serveur !"
   },
   "rules": {
     "embed": {

@@ -1,13 +1,12 @@
 package task
 
 import (
-	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/api"
 	"github.com/goroutine/template/config"
 	"github.com/goroutine/template/helpers"
 	"github.com/goroutine/template/log"
-	i18n "github.com/kaysoro/discordgo-i18n"
+	"strconv"
 )
 
 var _ api.Task = (*GuildMemberCountTask)(nil)
@@ -35,7 +34,7 @@ func (g GuildMemberCountTask) Run() {
 	}
 
 	if _, err = g.s.ChannelEdit(config.ConfigInstance.Channels.MemberCount, &discordgo.ChannelEdit{
-		Name: i18n.Get(discordgo.French, "member-count-channel-name", i18n.Vars{"count": fmt.Sprint(membersCount)}),
+		Name: "│👥│Membres: " + strconv.Itoa(membersCount) + "/100",
 	}); err != nil {
 		log.Logger.Error("Could not edit member count channel: ", err)
 	}
