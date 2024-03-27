@@ -31,8 +31,7 @@ const (
 	WHITE         = "#f9f9f6"
 	CREAM         = "#ffdab9"
 	ELORION       = "#ff9900"
-	GOROUTINE     = "#77C6F9"
-	MYSTERYBOT    = "#0066FF"
+	VALOROUS      = "#652481"
 )
 
 func New() *Embed {
@@ -92,7 +91,7 @@ func (e *Embed) SetFooter(text, iconUrl string) *Embed {
 
 func (e *Embed) SetDefaultFooter() *Embed {
 	e.Footer = &discordgo.MessageEmbedFooter{
-		Text: "GoRoutine.fr",
+		Text: "Valorous",
 	}
 	return e
 }

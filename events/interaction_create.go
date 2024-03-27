@@ -4,7 +4,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/api"
 	"github.com/goroutine/template/commands"
-	features2 "github.com/goroutine/template/features"
+	"github.com/goroutine/template/features/rules"
 	"strings"
 )
 
@@ -12,7 +12,7 @@ var features []api.MessageComponentFeature
 
 func init() {
 	features = []api.MessageComponentFeature{
-		features2.ExampleFeature{},
+		&rules.RulesFeature{},
 	}
 }
 

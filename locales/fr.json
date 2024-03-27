@@ -1,8 +1,21 @@
 {
-  "hello-world": [
-    "coucou toi {{ .name }}!",
-    "bonjour toi {{ .name }}!"
-  ],
-  "dont-existing": "I don't exist",
-  "member-count-channel-name": "Membres: {{ .count }}"
+  "event": {
+    "member_join_title": "Bienvenue à toi ",
+    "member_join_description": "Nous sommes désormais "
+  },
+  "rules": {
+    "embed": {
+      "rules_title": "Règlement",
+      "rules_description": ":prince: I - PSEUDONYME ET AVATAR\n\nIls ne doivent pas avoir de caractère pornographique, pouvoir être confondu/ressemblant avec/à celui d'un membre du staff, faire aucune référence à un autre serveur, être cause de débat principalement politique ou religieux ainsi que de contenir de propos racistes, homophobes, sexistes.\n\n:shield: II - COMPORTEMENT\n\nÀ l'écrit comme à l'oral, vous êtes priés de:\n\n• Ne pas être homophobe, sexiste ou raciste\n• Ne pas harceler.\n• Ne pas usurper une identité.\n• Ne pas parler de croyances religieuses et politiques.\n• Ne pas poster de contenu violent, choquant ou pornographique.\n• Ne pas faire de publicité pour une autre plateforme sans notre autorisation.\n\n:crossed_swords: III - SANCTIONS\n\nEn fonction de la gravité de votre faute, nous nous donnons le droit de vous expulser (kick) ou de vous bannir du Discord.\n\nToute référence à un autre serveur dans le but de lui faire de la publicité est punie par un ban définitif du serveur Discord.\nLes insultes sont réprimandées par un ban temporaire ou définitif. Tout est proportionnel à la gravité des insultes et leur contexte.\nLes pseudonymes \"hors-charte\" peuvent être sanctionnés par un bannissement temporaire, un kick ou tout simplement une demande de changement de pseudonyme.\nSi le membre refuse d'obtempérer, le modérateur se réservera le droit de le bannir temporairement ou permanent.\nL'usurpation d'identité d'un membre du staff, avec ou sans intention de nuire, se verra immédiatement et sans préavis sanctionnée d'un ban permanent\nEn cas de récidive, le staff se réserve le droit d'alourdir les sanctions.\n\nRéagissez via le bouton ci-dessous afin d'affirmez que vous avez lu et approuvé le règlement\n\nDernière édition le : 27/03/2024",
+      "accepted_rules_title": "Règlement",
+      "accepted_rules_description": "Vous avez accepté le règlement !"
+    },
+    "error": {
+      "already_accepted_rules_title": "Une erreur est survenue...",
+      "already_accepted_rules_description": "Vous avez déjà accepté le règlement !"
+    },
+    "button": {
+      "accept_rules": "Accepter le règlement"
+    }
+  }
 }
