@@ -8,9 +8,13 @@ type Config struct {
 }
 
 type channels struct {
-	MemberCount    string `json:"memberCount"`
-	WelcomeChannel string `json:"welcomeChannel"`
-	RulesChannel   string `json:"rulesChannel"`
+	MemberCount          string `json:"memberCount"`
+	WelcomeChannel       string `json:"welcomeChannel"`
+	RulesChannel         string `json:"rulesChannel"`
+	AutoVoiceChannel     string `json:"autoVoiceChannel"`
+	AutoVoiceChannelTeam string `json:"autoVoiceChannelTeam"`
+	TeamCategory         string `json:"teamCategory"`
+	AutoVoiceCategory    string `json:"autoVoiceCategory"`
 }
 
 type roles struct {
