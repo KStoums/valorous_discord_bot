@@ -8,16 +8,29 @@ type Config struct {
 }
 
 type channels struct {
-	MemberCount          string `json:"memberCount"`
-	WelcomeChannel       string `json:"welcomeChannel"`
-	RulesChannel         string `json:"rulesChannel"`
-	AutoVoiceChannel     string `json:"autoVoiceChannel"`
-	AutoVoiceChannelTeam string `json:"autoVoiceChannelTeam"`
-	TeamCategory         string `json:"teamCategory"`
-	AutoVoiceCategory    string `json:"autoVoiceCategory"`
+	MemberCount           string `json:"memberCount"`
+	WelcomeChannel        string `json:"welcomeChannel"`
+	RulesChannel          string `json:"rulesChannel"`
+	AutoVoiceChannel      string `json:"autoVoiceChannel"`
+	AutoVoiceChannelTeam  string `json:"autoVoiceChannelTeam"`
+	TeamCategory          string `json:"teamCategory"`
+	AutoVoiceCategory     string `json:"autoVoiceCategory"`
+	AutoRoleRankedChannel string `json:"autoRoleRankedChannel"`
+	LogChannel            string `json:"logChannel"`
 }
 
 type roles struct {
-	MemberRole       string `json:"memberRole"`
-	AcceptedRuleRole string `json:"acceptedRuleRole"`
+	MemberRole        string `json:"memberRole"`
+	AcceptedRuleRole  string `json:"acceptedRuleRole"`
+	UnrankedRole      string `json:"unrankedRole"`
+	IronRole          string `json:"ironRole"`
+	BronzeRole        string `json:"bronzeRole"`
+	SilverRole        string `json:"silverRole"`
+	GoldRole          string `json:"goldRole"`
+	PlatinumRole      string `json:"platinumRole"`
+	DiamondRole       string `json:"diamondRole"`
+	AscendantRole     string `json:"ascendantRole"`
+	ImmortalRole      string `json:"immortalRole"`
+	RadiantRole       string `json:"radiantRole"`
+	RankSeparatorRole string `json:"rankSeparatorRole"`
 }

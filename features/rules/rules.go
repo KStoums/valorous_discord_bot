@@ -5,6 +5,7 @@ import (
 	"github.com/goroutine/template/api"
 	"github.com/goroutine/template/config"
 	"github.com/goroutine/template/log"
+	"github.com/goroutine/template/utils"
 	"github.com/goroutine/template/utils/embed"
 	"github.com/goroutine/template/utils/strutils"
 	i18n "github.com/kaysoro/discordgo-i18n"
@@ -72,5 +73,10 @@ func (h *RulesFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
 	if err != nil {
 		log.Logger.Error(err)
 		return
+	}
+
+	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "rules.embed.accepted_rules_logs", i18n.Vars{"memberUsername": i.Member.User.GlobalName}))
+	if err != nil {
+		log.Logger.Error(err)
 	}
 }

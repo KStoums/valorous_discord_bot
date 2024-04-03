@@ -5,6 +5,7 @@ import (
 	"github.com/goroutine/template/config"
 	"github.com/goroutine/template/helpers"
 	"github.com/goroutine/template/log"
+	"github.com/goroutine/template/utils"
 	"github.com/goroutine/template/utils/embed"
 	i18n "github.com/kaysoro/discordgo-i18n"
 )
@@ -31,6 +32,12 @@ func MemberJoinEvent(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 	}
 
 	err = s.GuildMemberRoleAdd(m.GuildID, m.Member.User.ID, config.ConfigInstance.Roles.MemberRole)
+	if err != nil {
+		log.Logger.Error(err)
+		return
+	}
+
+	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "event.member_join_logs", i18n.Vars{"memberUsername": m.Member.User.GlobalName}))
 	if err != nil {
 		log.Logger.Error(err)
 		return

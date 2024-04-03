@@ -42,7 +42,7 @@ func CreateRulesEmbed(s *discordgo.Session) {
 						discordgo.Button{
 							Label: i18n.Get(discordgo.French, "rules.button.accept_rules"),
 							Style: discordgo.SuccessButton,
-							Emoji: discordgo.ComponentEmoji{
+							Emoji: &discordgo.ComponentEmoji{
 								Name: "🖊️",
 							},
 							CustomID: AcceptRules,

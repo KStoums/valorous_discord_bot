@@ -24,6 +24,7 @@ func AutoVoiceFeature(s *discordgo.Session, v *discordgo.VoiceStateUpdate, categ
 		Type:                 discordgo.ChannelTypeGuildVoice,
 		PermissionOverwrites: autoVoiceChannelCategory.PermissionOverwrites,
 		ParentID:             autoVoiceChannelCategory.ID,
+		UserLimit:            6,
 	})
 	if err != nil {
 		log.Error().Err(err)

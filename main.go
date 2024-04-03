@@ -33,7 +33,8 @@ func main() {
 	discord.Identify.Intents = discordgo.IntentsAll
 
 	discord.AddHandlerOnce(ready.ReadyEvent)
-	addHandlers(discord, events.InteractionCreateEvent, events.MemberJoinEvent, events.VoiceStateUpdateEvent)
+	addHandlers(discord, events.InteractionCreateEvent, events.MemberJoinEvent, events.VoiceStateUpdateEvent,
+		events.ReactionAddEvent, events.ReactionRemoveEvent)
 
 	if err = discord.Open(); err != nil {
 		log.Logger.Fatal(err)
