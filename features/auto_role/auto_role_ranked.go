@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/config"
+	"github.com/goroutine/template/utils/strutils"
 	"github.com/rs/zerolog/log"
 	"strings"
 )
@@ -61,10 +62,16 @@ func RemoveAutoRoleRankedFeature(s *discordgo.Session, r *discordgo.MessageReact
 		log.Logger.Err(errors.New("emojiNameSplit len is not equal as 2"))
 		return
 	}
-
 	rankName := emojiNameSplit[0]
+
+	member, err := s.GuildMember(r.GuildID, r.UserID)
+	if err != nil {
+		log.Logger.Err(err)
+		return
+	}
+
 	for _, role := range roles {
-		if strings.EqualFold(role.Name, rankName) {
+		if strings.EqualFold(role.Name, rankName) && strutils.ContainString(member.Roles, role.ID) {
 			err = s.GuildMemberRoleRemove(r.GuildID, r.UserID, role.ID)
 			if err != nil {
 				log.Logger.Err(err)
