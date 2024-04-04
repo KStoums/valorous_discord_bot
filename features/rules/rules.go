@@ -61,8 +61,8 @@ func (h *RulesFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
 		Type: discordgo.InteractionResponseChannelMessageWithSource,
 		Data: &discordgo.InteractionResponseData{
 			Embeds: embed.New().
-				SetTitle(i18n.Get(discordgo.French, "rules.embed.accepted_rules_title")).
-				SetDescription(i18n.Get(discordgo.French, "rules.embed.accepted_rules_description")).
+				SetTitle(i18n.Get(discordgo.French, "rules.accepted_rules_title")).
+				SetDescription(i18n.Get(discordgo.French, "rules.accepted_rules_description")).
 				SetCurrentTimestamp().
 				SetDefaultFooter().
 				SetColor(embed.VALOROUS).
@@ -75,7 +75,7 @@ func (h *RulesFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
 		return
 	}
 
-	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "rules.embed.accepted_rules_logs", i18n.Vars{"memberUsername": i.Member.User.GlobalName}))
+	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "rules.accepted_rules_logs", i18n.Vars{"memberUsername": i.Member.User.GlobalName}))
 	if err != nil {
 		log.Logger.Error(err)
 	}

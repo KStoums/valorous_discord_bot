@@ -29,8 +29,8 @@ func CreateRulesEmbed(s *discordgo.Session) {
 
 		_, err = s.ChannelMessageSendComplex(config.ConfigInstance.Channels.RulesChannel, &discordgo.MessageSend{
 			Embeds: embed.New().
-				SetTitle(i18n.Get(discordgo.French, "rules.embed.rules_title")).
-				SetDescription(i18n.Get(discordgo.French, "rules.embed.rules_description")).
+				SetTitle(i18n.Get(discordgo.French, "rules.rules_title")).
+				SetDescription(i18n.Get(discordgo.French, "rules.rules_description")).
 				SetThumbnail("https://zupimages.net/up/24/13/ltt3.png").
 				SetCurrentTimestamp().
 				SetDefaultFooter().

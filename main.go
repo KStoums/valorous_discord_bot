@@ -34,7 +34,7 @@ func main() {
 
 	discord.AddHandlerOnce(ready.ReadyEvent)
 	addHandlers(discord, events.InteractionCreateEvent, events.MemberJoinEvent, events.VoiceStateUpdateEvent,
-		events.ReactionAddEvent, events.ReactionRemoveEvent)
+		events.ReactionAddEvent, events.ReactionRemoveEvent, events.MessageCreateEvent)
 
 	if err = discord.Open(); err != nil {
 		log.Logger.Fatal(err)
