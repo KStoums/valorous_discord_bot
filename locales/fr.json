@@ -27,5 +27,8 @@
   },
   "clip": {
     "clip_title": "Clip de {{ .authorName }}"
+  },
+  "announce": {
+    "announce_title": "Nouvelle annonce !"
   }
 }

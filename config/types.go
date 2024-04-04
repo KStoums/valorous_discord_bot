@@ -19,6 +19,8 @@ type channels struct {
 	LogChannel            string `json:"logChannel"`
 	SuggestionChannel     string `json:"suggestionChannel"`
 	ClipChannel           string `json:"clipChannel"`
+	PublicAnnounceChannel string `json:"publicAnnounceChannel"`
+	TeamAnnounceChannel   string `json:"teamAnnounceChannel"`
 }
 
 type roles struct {
