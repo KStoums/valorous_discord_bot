@@ -24,5 +24,8 @@
   },
   "suggestion": {
     "suggestion_title": "Suggestion de {{ .authorName }}"
+  },
+  "clip": {
+    "clip_title": "Clip de {{ .authorName }}"
   }
 }

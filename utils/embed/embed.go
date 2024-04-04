@@ -135,6 +135,15 @@ func (e *Embed) ToJson() (string, error) {
 	return string(jsonResult), nil
 }
 
+func (e *Embed) SetVideo(url string) *Embed {
+	e.Video = &discordgo.MessageEmbedVideo{
+		URL:    url,
+		Width:  100,
+		Height: 50,
+	}
+	return e
+}
+
 func (e *Embed) ToMessageEmbed() *discordgo.MessageEmbed {
 	return &e.MessageEmbed
 }

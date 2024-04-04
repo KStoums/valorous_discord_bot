@@ -18,6 +18,7 @@ type channels struct {
 	AutoRoleRankedChannel string `json:"autoRoleRankedChannel"`
 	LogChannel            string `json:"logChannel"`
 	SuggestionChannel     string `json:"suggestionChannel"`
+	ClipChannel           string `json:"clipChannel"`
 }
 
 type roles struct {
