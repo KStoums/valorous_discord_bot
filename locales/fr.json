@@ -2,14 +2,14 @@
   "event": {
     "member_join_title": "Bienvenue à toi ",
     "member_join_description": "\nBienvenue sur Valorous ! \uD83C\uDF89\n\nPrêt à plonger dans l'action ?\n\nConsulte nos canaux, rencontre de nouveaux alliés, et éclate-toi en jeu !\n\nN'oublie pas de lire les règles.\n\nÀ bientôt sur le champ de bataille ! \uD83D\uDE80",
-    "member_join_logs": "{{ .newMemberUsername }} a rejoint le discord."
+    "member_join_logs": "**{{ .memberUsername }}** a rejoint le discord."
   },
   "rules": {
     "rules_title": "Règlement",
     "rules_description": ":prince: I - PSEUDONYME ET AVATAR\n\nIls ne doivent pas avoir de caractère pornographique, pouvoir être confondu/ressemblant avec/à celui d'un membre du staff, faire aucune référence à un autre serveur, être cause de débat principalement politique ou religieux ainsi que de contenir de propos racistes, homophobes, sexistes.\n\n:shield: II - COMPORTEMENT\n\nÀ l'écrit comme à l'oral, vous êtes priés de:\n\n• Ne pas être homophobe, sexiste ou raciste\n• Ne pas harceler.\n• Ne pas usurper une identité.\n• Ne pas parler de croyances religieuses et politiques.\n• Ne pas poster de contenu violent, choquant ou pornographique.\n• Ne pas faire de publicité pour une autre plateforme sans notre autorisation.\n\n:crossed_swords: III - SANCTIONS\n\nEn fonction de la gravité de votre faute, nous nous donnons le droit de vous expulser (kick) ou de vous bannir du Discord.\n\nToute référence à un autre serveur dans le but de lui faire de la publicité est punie par un ban définitif du serveur Discord.\nLes insultes sont réprimandées par un ban temporaire ou définitif. Tout est proportionnel à la gravité des insultes et leur contexte.\nLes pseudonymes \"hors-charte\" peuvent être sanctionnés par un bannissement temporaire, un kick ou tout simplement une demande de changement de pseudonyme.\nSi le membre refuse d'obtempérer, le modérateur se réservera le droit de le bannir temporairement ou permanent.\nL'usurpation d'identité d'un membre du staff, avec ou sans intention de nuire, se verra immédiatement et sans préavis sanctionnée d'un ban permanent\nEn cas de récidive, le staff se réserve le droit d'alourdir les sanctions.\n\nRéagissez via le bouton ci-dessous afin d'affirmez que vous avez lu et approuvé le règlement\n\nDernière édition le : 27/03/2024",
     "accepted_rules_title": "Règlement",
     "accepted_rules_description": "Vous avez accepté le règlement !",
-    "accepted_rules_logs": "{{ .memberUsername }} a accepté le règlement.",
+    "accepted_rules_logs": "**{{ .memberUsername }}** a accepté le règlement.",
     "error": {
       "already_accepted_rules_title": "Une erreur est survenue...",
       "already_accepted_rules_description": "Vous avez déjà accepté le règlement !"
@@ -30,5 +30,46 @@
   },
   "announce": {
     "announce_title": "Nouvelle annonce !"
+  },
+  "moderation_commands": {
+    "errors": {
+      "title": "Une erreur est survenue...",
+      "description": "Vous n'avez accès à cette commande.",
+      "already_muted": "Ce membre est déjà muet.",
+      "already_unmute": "Ce membre n'est pas muet.",
+      "mute_member_is_bot": "Vous ne pouvez pas rendre muet un bot.",
+      "unmute_member_is_bot": "Vous ne pouvez pas levé la restriction verbale à un bot."
+    },
+    "logs": {
+      "clear_message_title": "Logs",
+      "clear_message_description": "{{ .member }} a supprimé **{{ .messageCount }}** messages dans le salon {{ .channelMention }}.",
+      "muted_title": "Logs",
+      "muted_description": "{{ .member }} a rendu muet {{ .mutedMember }}.\nRaison: {{ .muteReason }}",
+      "unmute_title": "Logs",
+      "unmute_description": "{{ .member }} a levé la restriction verbale à {{ .mutedMember }}."
+    },
+    "clear": {
+      "clear_response_title": "Modération",
+      "clear_response_description": "Vous avez supprimé **{{ .messageCount }}** messages.",
+      "clear_message_count_args": "Quantité de message à supprimer",
+      "clear_command_description": "Permets de supprimer une certaine quantité de message (100 maximum)"
+    },
+    "mute": {
+      "args": {
+        "member": "Membre à rendre muet",
+        "reason": "Raison de l'action"
+      },
+      "mute_description": "Permets de rendre muet un membre",
+      "muted_response_title": "Modération",
+      "muted_response_description": "Vous avez rendu muet {{ .memberMention }}.\nRaison: {{ .muteReason }}"
+    },
+    "unmute": {
+      "args": {
+        "member": "Membre à lever la restriction verbale"
+      },
+      "unmute_description": "Permets de lever la restriction verbale à un membre.",
+      "unmute_response_title": "Modération",
+      "unmute_response_description": "Vous avez levé la restriction verbale à {{ .memberMention }}."
+    }
   }
 }

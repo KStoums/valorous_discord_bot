@@ -16,7 +16,7 @@ func ReadyEvent(s *discordgo.Session, r *discordgo.Ready) {
 	auto_role.CreateAutoRoleRankedEmbed(s)
 
 	taskManager := task.NewTaskManager()
-	taskManager.AddTasks(task.NewGuildMemberCountTask(s))
+	taskManager.AddTasks(task.NewGuildMemberCountTask(s), task.NewBotPresence(s))
 	taskManager.RunTasks()
 
 	commands.RegisterCommands(s, r.User)
