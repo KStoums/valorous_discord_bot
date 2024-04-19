@@ -20,7 +20,7 @@
   },
   "auto_role_ranked": {
     "embed_title": "Rang classé Valorant",
-    "embed_description": "Cliquez sur la réaction correspondant à votre rang sur le classé de Valorant. \n\nGrâce à ceci, trouvez des mates à votre rang plus facilement !\nSi vous rencontrez un problème, n'hésitez pas à ouvrir un ticket ! \nBon jeu ! \n\n<:unranked:1225196264929366187> » Unranked (Non classé) \n<:iron_rank:1225168211037917307> » Rang Iron (Fer) \n<:bronze_rank:1225168255610519664> » Rang Bronze \n<:silver_rank:1225168292738760809> » Rang Silver (Argent) \n<:gold_rank:1225168329120157747> » Rang Gold (Or) \n<:platinum_rank:1225168355854520341> » Rang Platinum (Platine) \n<:diamond_rank:1225168433931489290> » Rang Diamond (Diamant) \n<:ascendant_rank:1225168499354112040> » Rang Ascendant \n<:immortal_rank:1225168468496748645> » Rang Immortal (Immortel) \n<:radiant_rank:1225168530002018436> » Rang Radiant"
+    "embed_description": "Veuillez sélectionner la réaction correspondant à votre classement actuel dans Valorant. Cette fonctionnalité facilitera la recherche de coéquipiers de votre niveau. \n\nEn cas de difficulté, n'hésitez pas à nous contacter en ouvrant un ticket. \n\nNous vous souhaitons une agréable expérience de jeu ! \n\n**--------------------**\n<:unranked:1225196264929366187> » Unranked (Non classé) \n<:iron_rank:1225168211037917307> » Rang Iron (Fer) \n<:bronze_rank:1225168255610519664> » Rang Bronze \n<:silver_rank:1225168292738760809> » Rang Silver (Argent) \n<:gold_rank:1225168329120157747> » Rang Gold (Or) \n<:platinum_rank:1225168355854520341> » Rang Platinum (Platine) \n<:diamond_rank:1225168433931489290> » Rang Diamond (Diamant) \n<:ascendant_rank:1225168499354112040> » Rang Ascendant \n<:immortal_rank:1225168468496748645> » Rang Immortal (Immortel) \n<:radiant_rank:1225168530002018436> » Rang Radiant"
   },
   "suggestion": {
     "suggestion_title": "Suggestion de {{ .authorName }}"
@@ -71,5 +71,22 @@
       "unmute_response_title": "Modération",
       "unmute_response_description": "Vous avez levé la restriction verbale à {{ .memberMention }}."
     }
+  },
+  "ticket": {
+    "embed_title": "Ouvrir un ticket",
+    "embed_description": "Il est possible d'ouvrir un ticket en cliquant sur le bouton ci-dessous, notre équipe est disponible pour répondre à toutes vos questions ou préoccupations. N'hésitez pas à nous contacter si vous avez besoin d'assistance. \n\nMerci pour votre soutien continu et profitez pleinement de votre expérience de jeu !\n\nCordialement,\n\nL'équipe Valorous",
+    "button": {
+      "open_ticket": "Ouvrir un ticket"
+    },
+    "created_ticket_title": "Ticket de {{ .ticketAuthor }}",
+    "created_ticket_description": "Votre ticket a été créé avec succès, un modérateur arrivera sous peu pour vous assister.\n\nCordialement,\n\nL'équipe Valorous",
+    "created_ticket_title_response": "Création d'un ticket",
+    "created_ticket_description_response": "Vous venez d'ouvrir un ticket disponible ici: {{ .ticketChannelMention }}",
+    "ticket_created_logs_description": "{{ .ticketAuthor }} vient d'ouvrir un ticket. ({{ .ticketChannelMention }})",
+    "already_have_ticket_title": "Une erreur est survenue...",
+    "already_have_ticket_description": "Vous ne pouvez pas ouvrir un nouveau ticket car vous en avez déjà 1 d'ouvert.",
+    "close_ticket_title": "Fermeture du ticket...",
+    "close_ticket_description": "Fermeture du ticket dans 5 secondes...",
+    "closed_ticket_logs_description": "{{ .member }} vient de clôturer un ticket. (**{{ .ticketChannelName}}**)"
   }
 }

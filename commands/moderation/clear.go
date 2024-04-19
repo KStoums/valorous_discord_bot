@@ -4,11 +4,11 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/config"
+	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/utils"
 	"github.com/goroutine/template/utils/embed"
 	"github.com/goroutine/template/utils/strutils"
 	i18n "github.com/kaysoro/discordgo-i18n"
-	"github.com/rs/zerolog/log"
 )
 
 func ClearCommand() commands.SlashCommand {
@@ -40,7 +40,7 @@ func ClearCommand() commands.SlashCommand {
 					},
 				})
 				if err != nil {
-					log.Error().Err(err)
+					log.Logger.Error(err)
 					return
 				}
 				return
@@ -49,7 +49,7 @@ func ClearCommand() commands.SlashCommand {
 			messageCountToDelete := i.ApplicationCommandData().Options[0].IntValue()
 			channelMessages, err := s.ChannelMessages(i.ChannelID, 100, "", "", "")
 			if err != nil {
-				log.Error().Err(err)
+				log.Logger.Error(err)
 				return
 			}
 
@@ -63,7 +63,7 @@ func ClearCommand() commands.SlashCommand {
 
 			err = s.ChannelMessagesBulkDelete(i.ChannelID, messageList)
 			if err != nil {
-				log.Error().Err(err)
+				log.Logger.Error(err)
 				return
 			}
 
@@ -84,25 +84,25 @@ func ClearCommand() commands.SlashCommand {
 				},
 			})
 			if err != nil {
-				log.Error().Err(err)
+				log.Logger.Error(err)
 				return
 			}
 
 			//Logs
 			channel, err := s.Channel(i.ChannelID)
 			if err != nil {
-				log.Error().Err(err)
+				log.Logger.Error(err)
 				return
 			}
 
 			err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "moderation_commands.logs.clear_message_description",
 				i18n.Vars{
-					"member":         i.Member.User.GlobalName,
+					"member":         i.Member.Mention(),
 					"messageCount":   messageCountToDelete,
 					"channelMention": channel.Mention(),
 				}))
 			if err != nil {
-				log.Error().Err(err)
+				log.Logger.Error(err)
 				return
 			}
 		},

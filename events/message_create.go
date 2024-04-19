@@ -6,7 +6,7 @@ import (
 	"github.com/goroutine/template/features/announce"
 	"github.com/goroutine/template/features/clip"
 	"github.com/goroutine/template/features/suggestion"
-	"github.com/rs/zerolog/log"
+	"github.com/goroutine/template/log"
 )
 
 func MessageCreateEvent(s *discordgo.Session, m *discordgo.MessageCreate) {
@@ -18,21 +18,21 @@ func MessageCreateEvent(s *discordgo.Session, m *discordgo.MessageCreate) {
 	case config.ConfigInstance.Channels.SuggestionChannel:
 		err := suggestion.SuggestionFeature(s, m)
 		if err != nil {
-			log.Logger.Err(err)
+			log.Logger.Error(err)
 			return
 		}
 
 	case config.ConfigInstance.Channels.ClipChannel:
 		err := clip.ClipFeature(s, m)
 		if err != nil {
-			log.Logger.Err(err)
+			log.Logger.Error(err)
 			return
 		}
 
 	case config.ConfigInstance.Channels.PublicAnnounceChannel, config.ConfigInstance.Channels.TeamAnnounceChannel:
 		err := announce.AnnounceFeature(s, m)
 		if err != nil {
-			log.Logger.Err(err)
+			log.Logger.Error(err)
 			return
 		}
 

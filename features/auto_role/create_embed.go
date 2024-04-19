@@ -3,9 +3,9 @@ package auto_role
 import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/config"
+	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/utils/embed"
 	i18n "github.com/kaysoro/discordgo-i18n"
-	"github.com/rs/zerolog/log"
 )
 
 var valorantRolesIcons = []string{":unranked:1225196264929366187", ":iron_rank:1225168211037917307", ":bronze_rank:1225168255610519664", ":silver_rank:1225168292738760809", ":gold_rank:1225168329120157747",
@@ -15,13 +15,13 @@ var valorantRolesIcons = []string{":unranked:1225196264929366187", ":iron_rank:1
 func CreateAutoRoleRankedEmbed(s *discordgo.Session) {
 	autoRoleRankedChannel, err := s.Channel(config.ConfigInstance.Channels.AutoRoleRankedChannel)
 	if err != nil {
-		log.Logger.Err(err)
+		log.Logger.Error(err)
 		return
 	}
 
 	channelMessages, err := s.ChannelMessages(autoRoleRankedChannel.ID, 100, "", "", "")
 	if err != nil {
-		log.Logger.Err(err)
+		log.Logger.Error(err)
 		return
 	}
 
@@ -36,7 +36,7 @@ func CreateAutoRoleRankedEmbed(s *discordgo.Session) {
 
 	err = s.ChannelMessagesBulkDelete(autoRoleRankedChannel.ID, messagesToDelete)
 	if err != nil {
-		log.Logger.Err(err)
+		log.Logger.Error(err)
 		return
 	}
 
@@ -49,14 +49,14 @@ func CreateAutoRoleRankedEmbed(s *discordgo.Session) {
 		SetThumbnail("https://zupimages.net/up/24/14/malz.png").
 		ToMessageEmbeds())
 	if err != nil {
-		log.Logger.Err(err)
+		log.Logger.Error(err)
 		return
 	}
 
 	for _, icon := range valorantRolesIcons {
 		err = s.MessageReactionAdd(autoRoleRankedChannel.ID, autoRoleRankedMessage.ID, icon)
 		if err != nil {
-			log.Logger.Err(err)
+			log.Logger.Error(err)
 			return
 		}
 	}

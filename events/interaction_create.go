@@ -5,6 +5,7 @@ import (
 	"github.com/goroutine/template/api"
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/features/rules"
+	"github.com/goroutine/template/features/ticket"
 	"strings"
 )
 
@@ -13,6 +14,8 @@ var features []api.MessageComponentFeature
 func init() {
 	features = []api.MessageComponentFeature{
 		&rules.RulesFeature{},
+		&ticket.CreateTicketFeature{},
+		&ticket.CloseTicketFeature{},
 	}
 }
 

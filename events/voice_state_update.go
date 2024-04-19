@@ -5,7 +5,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/config"
 	"github.com/goroutine/template/features/auto_voice"
-	"github.com/rs/zerolog/log"
+	"github.com/goroutine/template/log"
 	"strings"
 )
 
@@ -14,7 +14,7 @@ func VoiceStateUpdateEvent(s *discordgo.Session, v *discordgo.VoiceStateUpdate) 
 	case config.ConfigInstance.Channels.AutoVoiceChannel, config.ConfigInstance.Channels.AutoVoiceChannelTeam:
 		autoVoiceChannel, err := s.Channel(v.ChannelID)
 		if err != nil {
-			log.Error().Err(err)
+			log.Logger.Error(err)
 			return
 		}
 
@@ -24,7 +24,7 @@ func VoiceStateUpdateEvent(s *discordgo.Session, v *discordgo.VoiceStateUpdate) 
 	case "":
 		beforeChannel, err := s.Channel(v.BeforeUpdate.ChannelID)
 		if err != nil {
-			log.Error().Err(err)
+			log.Logger.Error(err)
 			return
 		}
 
@@ -37,11 +37,11 @@ func VoiceStateUpdateEvent(s *discordgo.Session, v *discordgo.VoiceStateUpdate) 
 			if membersCountInChannel == 0 {
 				_, err = s.ChannelDelete(beforeChannel.ID)
 				if err != nil {
-					log.Error().Err(err)
+					log.Logger.Error(err)
 					return
 				}
 
-				log.Debug().Msg(fmt.Sprintf("The vocal salon %s has been deleted because the number of members is equal to 0", beforeChannel.Name))
+				log.Logger.Debug(fmt.Sprintf("The vocal salon %s has been deleted because the number of members is equal to 0", beforeChannel.Name))
 				return
 			}
 		}

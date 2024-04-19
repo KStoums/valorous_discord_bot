@@ -5,6 +5,7 @@ import (
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/features/auto_role"
 	"github.com/goroutine/template/features/rules"
+	"github.com/goroutine/template/features/ticket"
 	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/task"
 )
@@ -14,6 +15,7 @@ func ReadyEvent(s *discordgo.Session, r *discordgo.Ready) {
 
 	rules.CreateRulesEmbed(s)
 	auto_role.CreateAutoRoleRankedEmbed(s)
+	ticket.CreateTicketEmbed(s)
 
 	taskManager := task.NewTaskManager()
 	taskManager.AddTasks(task.NewGuildMemberCountTask(s), task.NewBotPresence(s))

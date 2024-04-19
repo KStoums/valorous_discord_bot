@@ -14,13 +14,13 @@ import (
 var _ api.MessageComponentFeature = (*RulesFeature)(nil)
 
 const (
-	AcceptRules = "accept-rules"
+	acceptRules = "accept-rules"
 )
 
 type RulesFeature struct{}
 
 func (h *RulesFeature) Names() []string {
-	return []string{AcceptRules}
+	return []string{acceptRules}
 }
 
 func (h *RulesFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
@@ -75,7 +75,7 @@ func (h *RulesFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
 		return
 	}
 
-	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "rules.accepted_rules_logs", i18n.Vars{"memberUsername": i.Member.User.GlobalName}))
+	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "rules.accepted_rules_logs", i18n.Vars{"memberUsername": i.Member.Mention()}))
 	if err != nil {
 		log.Logger.Error(err)
 	}

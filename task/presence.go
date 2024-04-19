@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/config"
-	"github.com/rs/zerolog/log"
+	"github.com/goroutine/template/log"
 )
 
 var i int
@@ -21,7 +21,7 @@ func NewBotPresence(s *discordgo.Session) *BotPresence {
 func (b BotPresence) Run() {
 	members, err := b.s.GuildMembers(config.ConfigInstance.GuildId, "", 100)
 	if err != nil {
-		log.Error().Err(errors.New("unable to get guild members : " + err.Error()))
+		log.Logger.Error(errors.New("unable to get guild members : " + err.Error()))
 		return
 	}
 	presenceName := []string{fmt.Sprintf("%d/100 membres", len(members)), "Valorant"}
@@ -29,13 +29,13 @@ func (b BotPresence) Run() {
 	if i == 0 {
 		err = b.s.UpdateWatchStatus(1, presenceName[i])
 		if err != nil {
-			log.Error().Err(errors.New("unable to update bot status : " + err.Error()))
+			log.Logger.Error(errors.New("unable to update bot status : " + err.Error()))
 			return
 		}
 	} else {
 		err = b.s.UpdateGameStatus(1, presenceName[i])
 		if err != nil {
-			log.Error().Err(errors.New("unable to update bot status : " + err.Error()))
+			log.Logger.Error(errors.New("unable to update bot status : " + err.Error()))
 			return
 		}
 	}

@@ -4,11 +4,11 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/config"
+	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/utils"
 	"github.com/goroutine/template/utils/embed"
 	"github.com/goroutine/template/utils/strutils"
 	i18n "github.com/kaysoro/discordgo-i18n"
-	"github.com/rs/zerolog/log"
 )
 
 func UnmuteCommand() commands.SlashCommand {
@@ -40,7 +40,7 @@ func UnmuteCommand() commands.SlashCommand {
 					},
 				})
 				if err != nil {
-					log.Error().Err(err)
+					log.Logger.Error(err)
 					return
 				}
 				return
@@ -62,7 +62,7 @@ func UnmuteCommand() commands.SlashCommand {
 					},
 				})
 				if err != nil {
-					log.Error().Err(err)
+					log.Logger.Error(err)
 					return
 				}
 				return
@@ -70,14 +70,14 @@ func UnmuteCommand() commands.SlashCommand {
 
 			guildMember, err := s.GuildMember(config.ConfigInstance.GuildId, target.ID)
 			if err != nil {
-				log.Error().Err(err)
+				log.Logger.Error(err)
 				return
 			}
 
 			if strutils.ContainString(guildMember.Roles, config.ConfigInstance.Roles.MutedRole) {
 				err = s.GuildMemberRoleRemove(config.ConfigInstance.GuildId, target.ID, config.ConfigInstance.Roles.MutedRole)
 				if err != nil {
-					log.Error().Err(err)
+					log.Logger.Error(err)
 					return
 				}
 
@@ -98,18 +98,18 @@ func UnmuteCommand() commands.SlashCommand {
 					},
 				})
 				if err != nil {
-					log.Error().Err(err)
+					log.Logger.Error(err)
 					return
 				}
 
 				//Logs
 				err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "moderation_commands.logs.unmute_description",
 					i18n.Vars{
-						"member":      i.Member.User.GlobalName,
+						"member":      i.Member.Mention(),
 						"mutedMember": target.Mention(),
 					}))
 				if err != nil {
-					log.Error().Err(err)
+					log.Logger.Error(err)
 					return
 				}
 				return
@@ -129,7 +129,7 @@ func UnmuteCommand() commands.SlashCommand {
 				},
 			})
 			if err != nil {
-				log.Error().Err(err)
+				log.Logger.Error(err)
 				return
 			}
 		},

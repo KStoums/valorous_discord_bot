@@ -37,7 +37,7 @@ func MemberJoinEvent(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 		return
 	}
 
-	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "event.member_join_logs", i18n.Vars{"memberUsername": m.Member.User.GlobalName}))
+	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "event.member_join_logs", i18n.Vars{"memberUsername": m.Member.Mention()}))
 	if err != nil {
 		log.Logger.Error(err)
 		return
