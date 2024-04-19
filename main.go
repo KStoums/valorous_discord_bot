@@ -34,7 +34,8 @@ func main() {
 
 	discord.Identify.Intents = discordgo.IntentsAll
 
-	commands.AddCommands(moderation.ClearCommand(), moderation.MuteCommand(), moderation.UnmuteCommand())
+	commands.AddCommands(moderation.ClearCommand(), moderation.MuteCommand(), moderation.UnmuteCommand(),
+		commands.WeaponCommand())
 
 	discord.AddHandlerOnce(ready.ReadyEvent)
 	addHandlers(discord, events.InteractionCreateEvent, events.MemberJoinEvent, events.VoiceStateUpdateEvent,

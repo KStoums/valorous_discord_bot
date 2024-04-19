@@ -1,4 +1,4 @@
-package rules
+package rule
 
 import (
 	"github.com/bwmarrin/discordgo"
@@ -8,7 +8,7 @@ import (
 	i18n "github.com/kaysoro/discordgo-i18n"
 )
 
-func CreateRulesEmbed(s *discordgo.Session) {
+func CreateRuleEmbed(s *discordgo.Session) {
 	channelMessages, err := s.ChannelMessages(config.ConfigInstance.Channels.RulesChannel, 100, "", "", "")
 	if err != nil {
 		log.Logger.Error(err)

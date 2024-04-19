@@ -4,7 +4,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/api"
 	"github.com/goroutine/template/commands"
-	"github.com/goroutine/template/features/rules"
+	"github.com/goroutine/template/features/rule"
 	"github.com/goroutine/template/features/ticket"
 	"strings"
 )
@@ -13,7 +13,7 @@ var features []api.MessageComponentFeature
 
 func init() {
 	features = []api.MessageComponentFeature{
-		&rules.RulesFeature{},
+		&rule.RuleFeature{},
 		&ticket.CreateTicketFeature{},
 		&ticket.CloseTicketFeature{},
 	}

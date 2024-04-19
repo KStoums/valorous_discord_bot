@@ -1,4 +1,4 @@
-package rules
+package rule
 
 import (
 	"github.com/bwmarrin/discordgo"
@@ -11,19 +11,19 @@ import (
 	i18n "github.com/kaysoro/discordgo-i18n"
 )
 
-var _ api.MessageComponentFeature = (*RulesFeature)(nil)
+var _ api.MessageComponentFeature = (*RuleFeature)(nil)
 
 const (
 	acceptRules = "accept-rules"
 )
 
-type RulesFeature struct{}
+type RuleFeature struct{}
 
-func (h *RulesFeature) Names() []string {
+func (h *RuleFeature) Names() []string {
 	return []string{acceptRules}
 }
 
-func (h *RulesFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
+func (h *RuleFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
 	member, err := s.GuildMember(i.GuildID, i.Member.User.ID)
 	if err != nil {
 		log.Logger.Error(err)

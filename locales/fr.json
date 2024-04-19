@@ -88,5 +88,14 @@
     "close_ticket_title": "Fermeture du ticket...",
     "close_ticket_description": "Fermeture du ticket dans 5 secondes...",
     "closed_ticket_logs_description": "{{ .member }} vient de clôturer un ticket. (**{{ .ticketChannelName}}**)"
+  },
+  "weapon": {
+    "command_description": "Permet de voir les statistiques d'une arme présente dans Valorant",
+    "weapon_args": "Choisissez une arme afin de voir ses statistiques",
+    "request_valorant_api_error_title": "Une erreur est survenue...",
+    "request_valorant_api_error_description": "Une erreur est survenue lors de tentative de requête à l'api de Valorant. \nSi l'erreur persiste, veuillez ouvrir un ticket !",
+    "weapon_not_found_title": "Une erreur est survenue...",
+    "weapon_not_found_description": "L'arme sélectionnée n'existe pas ou n'a pas été trouvée, si vous pensez que cela est un bug, veuillez ouvrir un ticket !",
+    "weapon_found_title": "Statistiques: {{ .weaponName }}"
   }
 }
