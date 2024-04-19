@@ -101,7 +101,7 @@ func WeaponCommand() SlashCommand {
 					},
 					{
 						Name:  "Couteau",
-						Value: "knife",
+						Value: "melee",
 					},
 				},
 			},
@@ -133,8 +133,6 @@ func WeaponCommand() SlashCommand {
 				}
 			}
 
-			penetrationSplit := strings.SplitAfter(weapon.WeaponStats.WallPenetration, "::")
-
 			finalEmbeds := embed.New().
 				SetTitle(i18n.Get(discordgo.French, "weapon.weapon_found_title", i18n.Vars{
 					"weaponName": weapon.DisplayName,
@@ -149,8 +147,16 @@ func WeaponCommand() SlashCommand {
 				AddInlinedField("👝 Chargeur", strconv.Itoa(weapon.WeaponStats.MagazineSize)+" balles").
 				AddInlinedField("⏱️ Chargement", strconv.Itoa(int(weapon.WeaponStats.ReloadTimeSeconds))+" seconde(s)").
 				AddInlinedField("⏱️ Sortie", strconv.Itoa(int(weapon.WeaponStats.EquipTimeSeconds))+" seconde(s)").
-				AddInlinedField("🧱 Pénétration", penetrationSplit[1]).
 				ToMessageEmbeds()
+
+			if weapon.WeaponStats.WallPenetration != "" {
+				penetrationSplit := strings.SplitAfter(weapon.WeaponStats.WallPenetration, "::")
+				finalEmbeds[0].Fields = append(finalEmbeds[0].Fields, &discordgo.MessageEmbedField{
+					Name:   "🧱 Pénétration",
+					Value:  penetrationSplit[1],
+					Inline: true,
+				})
+			}
 
 			for _, damageRange := range weapon.WeaponStats.DamageRanges {
 				finalEmbeds[0].Fields = append(finalEmbeds[0].Fields, &discordgo.MessageEmbedField{

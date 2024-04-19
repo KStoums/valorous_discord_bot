@@ -1,16 +1,12 @@
 package models
 
 type Weapons struct {
-	UUID            string      `json:"uuid"`
-	DisplayName     string      `json:"displayName"`
-	Category        string      `json:"category"`
-	DefaultSkinUUID string      `json:"defaultSkinUuid"`
-	DisplayIcon     string      `json:"displayIcon"`
-	KillStreamIcon  string      `json:"killStreamIcon"`
-	AssetPath       string      `json:"assetPath"`
-	WeaponStats     WeaponStats `json:"weaponStats"`
-	ShopData        ShopData    `json:"shopData"`
-	Skins           []Skin      `json:"skins"`
+	UUID        string      `json:"uuid"`
+	DisplayName string      `json:"displayName"`
+	Category    string      `json:"category"`
+	DisplayIcon string      `json:"displayIcon"`
+	WeaponStats WeaponStats `json:"weaponStats"`
+	ShopData    ShopData    `json:"shopData"`
 }
 
 type WeaponStats struct {
@@ -59,28 +55,6 @@ type ShopData struct {
 	NewImage          string       `json:"newImage"`
 	NewImage2         *string      `json:"newImage2"`
 	AssetPath         string       `json:"assetPath"`
-}
-
-type Skin struct {
-	UUID            string   `json:"uuid"`
-	DisplayName     string   `json:"displayName"`
-	ThemeUUID       string   `json:"themeUuid"`
-	ContentTierUUID string   `json:"contentTierUuid"`
-	DisplayIcon     string   `json:"displayIcon"`
-	Wallpaper       *string  `json:"wallpaper"`
-	AssetPath       string   `json:"assetPath"`
-	Chromas         []Chroma `json:"chromas"`
-	Levels          []Level  `json:"levels"`
-}
-
-type Chroma struct {
-	UUID          string  `json:"uuid"`
-	DisplayName   string  `json:"displayName"`
-	DisplayIcon   *string `json:"displayIcon"`
-	FullRender    string  `json:"fullRender"`
-	Swatch        *string `json:"swatch"`
-	StreamedVideo *string `json:"streamedVideo"`
-	AssetPath     string  `json:"assetPath"`
 }
 
 type Level struct {
