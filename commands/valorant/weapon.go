@@ -1,9 +1,10 @@
-package commands
+package valorant
 
 import (
 	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"github.com/goccy/go-json"
+	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/models"
 	"github.com/goroutine/template/utils/embed"
@@ -15,13 +16,13 @@ import (
 
 const valorantApiWeaponUrl = "https://valorant-api.com/v1/weapons"
 
-func WeaponCommand() SlashCommand {
-	return SlashCommand{
+func WeaponCommand() commands.SlashCommand {
+	return commands.SlashCommand{
 		Name:        "weapon",
 		Description: i18n.Get(discordgo.French, "weapon.command_description"),
 		Enabled:     true,
-		ArgsFunc: ArgsFromStructs(
-			SlashCommandArg{
+		ArgsFunc: commands.ArgsFromStructs(
+			commands.SlashCommandArg{
 				Name:        "weapon_name",
 				Description: i18n.Get(discordgo.French, "weapon.weapon_args"),
 				Type:        discordgo.ApplicationCommandOptionString,
@@ -29,79 +30,79 @@ func WeaponCommand() SlashCommand {
 				Choices: []*discordgo.ApplicationCommandOptionChoice{
 					{
 						Name:  "Vandal",
-						Value: "vandal",
+						Value: "Vandal",
 					},
 					{
 						Name:  "Phantom",
-						Value: "phantom",
+						Value: "Phantom",
 					},
 					{
 						Name:  "Guardian",
-						Value: "guardian",
+						Value: "Guardian",
 					},
 					{
 						Name:  "Bulldog",
-						Value: "bulldog",
+						Value: "Bulldog",
 					},
 					{
 						Name:  "Odin",
-						Value: "odin",
+						Value: "Odin",
 					},
 					{
 						Name:  "Ares",
-						Value: "ares",
+						Value: "Ares",
 					},
 					{
 						Name:  "Operator",
-						Value: "operator",
+						Value: "Operator",
 					},
 					{
 						Name:  "Outlaw",
-						Value: "outlaw",
+						Value: "Outlaw",
 					},
 					{
 						Name:  "Marshal",
-						Value: "marshal",
+						Value: "Marshal",
 					},
 					{
 						Name:  "Judge",
-						Value: "judge",
+						Value: "Judge",
 					},
 					{
 						Name:  "Bucky",
-						Value: "bucky",
+						Value: "Bucky",
 					},
 					{
 						Name:  "Spectre",
-						Value: "spectre",
+						Value: "Spectre",
 					},
 					{
 						Name:  "Stinger",
-						Value: "stinger",
+						Value: "Stinger",
 					},
 					{
-						Name:  "Sherif",
-						Value: "sherif",
+						Name:  "Sheriff",
+						Value: "Sheriff",
 					},
 					{
 						Name:  "Ghost",
-						Value: "ghost",
+						Value: "Ghost",
 					},
 					{
 						Name:  "Frenzy",
-						Value: "frenzy",
+						Value: "Frenzy",
 					},
 					{
 						Name:  "Shorty",
-						Value: "shorty",
+						Value: "Shorty",
 					},
 					{
 						Name:  "Classic",
-						Value: "classic",
+						Value: "Classic",
 					},
 					{
 						Name:  "Couteau",
-						Value: "melee",
+						Value: "Melee",
 					},
 				},
 			},
@@ -114,10 +115,11 @@ func WeaponCommand() SlashCommand {
 				log.Logger.Error(err)
 				return
 			}
+			defer resp.Body.Close()
 
 			var responseBody struct {
-				Status int32            `json:"status"`
-				Data   []models.Weapons `json:"data"`
+				Status int32           `json:"status"`
+				Data   []models.Weapon `json:"data"`
 			}
 			err = json.NewDecoder(resp.Body).Decode(&responseBody)
 			if err != nil {
@@ -125,17 +127,17 @@ func WeaponCommand() SlashCommand {
 				return
 			}
 
-			var weapon models.Weapons
+			var weapon models.Weapon
 			for _, w := range responseBody.Data {
-				if strings.ToLower(w.DisplayName) == weaponName {
+				if w.DisplayName == weaponName {
 					weapon = w
 					break
 				}
 			}
 
 			finalEmbeds := embed.New().
-				SetTitle(i18n.Get(discordgo.French, "weapon.weapon_found_title", i18n.Vars{
-					"weaponName": weapon.DisplayName,
+				SetTitle(i18n.Get(discordgo.French, "weapon.weapon_title", i18n.Vars{
+					"weaponName": weaponName,
 				})).
 				SetColor(embed.VALOROUS).
 				SetCurrentTimestamp().
@@ -143,17 +145,16 @@ func WeaponCommand() SlashCommand {
 				SetImage(weapon.DisplayIcon).
 				SetThumbnail("https://zupimages.net/up/24/16/yte5.png").
 				AddInlinedField("💰 Prix", strconv.Itoa(weapon.ShopData.Cost)+"$").
-				AddInlinedField("📈 Cadence", strconv.Itoa(int(weapon.WeaponStats.FireRate))+" balles par seconde(s)").
-				AddInlinedField("👝 Chargeur", strconv.Itoa(weapon.WeaponStats.MagazineSize)+" balles").
+				AddInlinedField("💥 Cadence", strconv.Itoa(int(weapon.WeaponStats.FireRate))+" balle(s) par seconde(s)").
+				AddInlinedField("👝 Chargeur", strconv.Itoa(weapon.WeaponStats.MagazineSize)+" balle(s)").
 				AddInlinedField("⏱️ Chargement", strconv.Itoa(int(weapon.WeaponStats.ReloadTimeSeconds))+" seconde(s)").
 				AddInlinedField("⏱️ Sortie", strconv.Itoa(int(weapon.WeaponStats.EquipTimeSeconds))+" seconde(s)").
 				ToMessageEmbeds()
 
 			if weapon.WeaponStats.WallPenetration != "" {
-				penetrationSplit := strings.SplitAfter(weapon.WeaponStats.WallPenetration, "::")
 				finalEmbeds[0].Fields = append(finalEmbeds[0].Fields, &discordgo.MessageEmbedField{
 					Name:   "🧱 Pénétration",
-					Value:  penetrationSplit[1],
+					Value:  strings.Split(weapon.WeaponStats.WallPenetration, "::")[1],
 					Inline: true,
 				})
 			}
@@ -166,13 +167,13 @@ func WeaponCommand() SlashCommand {
 				})
 
 				finalEmbeds[0].Fields = append(finalEmbeds[0].Fields, &discordgo.MessageEmbedField{
-					Name:   fmt.Sprintf("👃 Corp \n(%v-%vm)", damageRange.RangeStartMeters, damageRange.RangeEndMeters),
+					Name:   fmt.Sprintf("🫃🏻 Corp \n(%v-%vm)", damageRange.RangeStartMeters, damageRange.RangeEndMeters),
 					Value:  strconv.Itoa(int(damageRange.BodyDamage)),
 					Inline: true,
 				})
 
 				finalEmbeds[0].Fields = append(finalEmbeds[0].Fields, &discordgo.MessageEmbedField{
-					Name:   fmt.Sprintf("🦶 Jambes \n(%v-%vm)", damageRange.RangeStartMeters, damageRange.RangeEndMeters),
+					Name:   fmt.Sprintf("🦵 Jambes \n(%v-%vm)", damageRange.RangeStartMeters, damageRange.RangeEndMeters),
 					Value:  strconv.Itoa(int(damageRange.LegDamage)),
 					Inline: true,
 				})

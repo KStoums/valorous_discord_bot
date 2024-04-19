@@ -92,10 +92,11 @@
   "weapon": {
     "command_description": "Permet de voir les statistiques d'une arme présente dans Valorant",
     "weapon_args": "Choisissez une arme afin de voir ses statistiques",
-    "request_valorant_api_error_title": "Une erreur est survenue...",
-    "request_valorant_api_error_description": "Une erreur est survenue lors de tentative de requête à l'api de Valorant. \nSi l'erreur persiste, veuillez ouvrir un ticket !",
-    "weapon_not_found_title": "Une erreur est survenue...",
-    "weapon_not_found_description": "L'arme sélectionnée n'existe pas ou n'a pas été trouvée, si vous pensez que cela est un bug, veuillez ouvrir un ticket !",
-    "weapon_found_title": "Statistiques {{ .weaponName }}"
+    "weapon_title": "Arme {{ .weaponName }}"
+  },
+  "map": {
+    "command_description": "Permet de voir les maps présente sur Valorant ainsi que quelques informations",
+    "map_args": "Choisissez une map afin de la voir et y avoir quelques informations",
+    "map_title": "Map {{ .mapName }}"
   }
 }

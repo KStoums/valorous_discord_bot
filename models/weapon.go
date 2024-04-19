@@ -1,6 +1,6 @@
 package models
 
-type Weapons struct {
+type Weapon struct {
 	UUID        string      `json:"uuid"`
 	DisplayName string      `json:"displayName"`
 	Category    string      `json:"category"`

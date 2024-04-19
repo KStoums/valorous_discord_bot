@@ -4,6 +4,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/commands/moderation"
+	"github.com/goroutine/template/commands/valorant"
 	"github.com/goroutine/template/config"
 	"github.com/goroutine/template/events"
 	"github.com/goroutine/template/events/ready"
@@ -21,7 +22,8 @@ func main() {
 	environnement.CheckEnvs() // Check if all envs are set
 
 	log.Logger.Info("Currently running commit: " + utils.GetCommit())
-	if err := i18n.LoadBundle(discordgo.French, "./locales/fr.json"); err != nil {
+	err := i18n.LoadBundle(discordgo.French, "./locales/fr.json")
+	if err != nil {
 		log.Logger.Fatal(err)
 	}
 
@@ -35,7 +37,7 @@ func main() {
 	discord.Identify.Intents = discordgo.IntentsAll
 
 	commands.AddCommands(moderation.ClearCommand(), moderation.MuteCommand(), moderation.UnmuteCommand(),
-		commands.WeaponCommand())
+		valorant.WeaponCommand(), valorant.MapCommand())
 
 	discord.AddHandlerOnce(ready.ReadyEvent)
 	addHandlers(discord, events.InteractionCreateEvent, events.MemberJoinEvent, events.VoiceStateUpdateEvent,
