@@ -14,7 +14,28 @@ import (
 	"strings"
 )
 
-const valorantApiWeaponUrl = "https://valorant-api.com/v1/weapons"
+const valorantApiWeaponUrl = "https://valorant-api.com/v1/weapons?language=fr-FR"
+
+var weaponsCommandArgs []*discordgo.ApplicationCommandOptionChoice
+
+type responseBodyWeapon struct {
+	Status int32           `json:"status"`
+	Data   []models.Weapon `json:"data"`
+}
+
+func init() {
+	weapons, err := requestWeaponsApi()
+	if err != nil {
+		panic(err)
+	}
+
+	for _, w := range weapons.Data {
+		weaponsCommandArgs = append(weaponsCommandArgs, &discordgo.ApplicationCommandOptionChoice{
+			Name:  w.DisplayName,
+			Value: w.DisplayName,
+		})
+	}
+}
 
 func WeaponCommand() commands.SlashCommand {
 	return commands.SlashCommand{
@@ -27,108 +48,20 @@ func WeaponCommand() commands.SlashCommand {
 				Description: i18n.Get(discordgo.French, "weapon.weapon_args"),
 				Type:        discordgo.ApplicationCommandOptionString,
 				Required:    true,
-				Choices: []*discordgo.ApplicationCommandOptionChoice{
-					{
-						Name:  "Vandal",
-						Value: "Vandal",
-					},
-					{
-						Name:  "Phantom",
-						Value: "Phantom",
-					},
-					{
-						Name:  "Guardian",
-						Value: "Guardian",
-					},
-					{
-						Name:  "Bulldog",
-						Value: "Bulldog",
-					},
-					{
-						Name:  "Odin",
-						Value: "Odin",
-					},
-					{
-						Name:  "Ares",
-						Value: "Ares",
-					},
-					{
-						Name:  "Operator",
-						Value: "Operator",
-					},
-					{
-						Name:  "Outlaw",
-						Value: "Outlaw",
-					},
-					{
-						Name:  "Marshal",
-						Value: "Marshal",
-					},
-					{
-						Name:  "Judge",
-						Value: "Judge",
-					},
-					{
-						Name:  "Bucky",
-						Value: "Bucky",
-					},
-					{
-						Name:  "Spectre",
-						Value: "Spectre",
-					},
-					{
-						Name:  "Stinger",
-						Value: "Stinger",
-					},
-					{
-						Name:  "Sheriff",
-						Value: "Sheriff",
-					},
-					{
-						Name:  "Ghost",
-						Value: "Ghost",
-					},
-					{
-						Name:  "Frenzy",
-						Value: "Frenzy",
-					},
-					{
-						Name:  "Shorty",
-						Value: "Shorty",
-					},
-					{
-						Name:  "Classic",
-						Value: "Classic",
-					},
-					{
-						Name:  "Couteau",
-						Value: "Melee",
-					},
-				},
+				Choices:     weaponsCommandArgs,
 			},
 		),
 		Handler: func(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			weaponName := i.ApplicationCommandData().Options[0].StringValue()
 
-			resp, err := http.Get(valorantApiWeaponUrl)
-			if err != nil {
-				log.Logger.Error(err)
-				return
-			}
-			defer resp.Body.Close()
-
-			var responseBody struct {
-				Status int32           `json:"status"`
-				Data   []models.Weapon `json:"data"`
-			}
-			err = json.NewDecoder(resp.Body).Decode(&responseBody)
+			weapons, err := requestWeaponsApi()
 			if err != nil {
 				log.Logger.Error(err)
 				return
 			}
 
 			var weapon models.Weapon
-			for _, w := range responseBody.Data {
+			for _, w := range weapons.Data {
 				if w.DisplayName == weaponName {
 					weapon = w
 					break
@@ -191,4 +124,22 @@ func WeaponCommand() commands.SlashCommand {
 			}
 		},
 	}
+}
+
+func requestWeaponsApi() (responseBodyWeapon, error) {
+	resp, err := http.Get(valorantApiWeaponUrl)
+	if err != nil {
+		log.Logger.Error(err)
+		return responseBodyWeapon{}, err
+	}
+	defer resp.Body.Close()
+
+	var response responseBodyWeapon
+	err = json.NewDecoder(resp.Body).Decode(&response)
+	if err != nil {
+		log.Logger.Error(err)
+		return responseBodyWeapon{}, err
+	}
+
+	return response, nil
 }

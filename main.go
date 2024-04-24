@@ -37,7 +37,7 @@ func main() {
 	discord.Identify.Intents = discordgo.IntentsAll
 
 	commands.AddCommands(moderation.ClearCommand(), moderation.MuteCommand(), moderation.UnmuteCommand(),
-		valorant.WeaponCommand(), valorant.MapCommand())
+		valorant.WeaponCommand(), valorant.MapCommand(), valorant.AgentCommand())
 
 	discord.AddHandlerOnce(ready.ReadyEvent)
 	addHandlers(discord, events.InteractionCreateEvent, events.MemberJoinEvent, events.VoiceStateUpdateEvent,
