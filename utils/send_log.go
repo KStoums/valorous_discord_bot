@@ -12,7 +12,7 @@ func SendLogToDiscordLogChannel(s *discordgo.Session, description string) error 
 		SetColor(embed.VALOROUS).
 		SetCurrentTimestamp().
 		SetDefaultFooter().
-		SetThumbnail("https://zupimages.net/up/24/14/lweg.png").
+		//SetThumbnail("https://zupimages.net/up/24/14/lweg.png").
 		SetDescription(description).
 		ToMessageEmbed())
 	return err

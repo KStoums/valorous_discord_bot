@@ -43,7 +43,7 @@ func CreateTicketEmbed(s *discordgo.Session) {
 				Components: []discordgo.MessageComponent{
 					discordgo.Button{
 						Label: i18n.Get(discordgo.French, "ticket.button.open_ticket"),
-						Style: discordgo.SuccessButton,
+						Style: discordgo.SecondaryButton,
 						Emoji: &discordgo.ComponentEmoji{
 							Name: "🎟️",
 						},

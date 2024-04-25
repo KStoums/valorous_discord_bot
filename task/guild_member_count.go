@@ -19,15 +19,15 @@ func NewGuildMemberCountTask(s *discordgo.Session) *GuildMemberCountTask {
 	return &GuildMemberCountTask{s: s}
 }
 
-func (g GuildMemberCountTask) CronString() string {
+func (g *GuildMemberCountTask) CronString() string {
 	return "@every 10m"
 }
 
-func (g GuildMemberCountTask) Name() string {
+func (g *GuildMemberCountTask) Name() string {
 	return "GuildMemberCountTask"
 }
 
-func (g GuildMemberCountTask) Run() {
+func (g *GuildMemberCountTask) Run() {
 	membersCount, err := helpers.GetMembersCount(g.s)
 	if err != nil {
 		log.Logger.Error("Could not get members count: ", err)
