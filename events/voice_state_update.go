@@ -21,14 +21,15 @@ func VoiceStateUpdateEvent(s *discordgo.Session, v *discordgo.VoiceStateUpdate) 
 		auto_voice.AutoVoiceFeature(s, v, autoVoiceChannel.ParentID)
 		return
 
-	case "":
+	default:
 		beforeChannel, err := s.Channel(v.BeforeUpdate.ChannelID)
 		if err != nil {
 			log.Logger.Error(err)
 			return
 		}
 
-		if beforeChannel.ParentID != config.ConfigInstance.Channels.AutoVoiceCategory && beforeChannel.ParentID != config.ConfigInstance.Channels.TeamCategory {
+		if beforeChannel.ParentID != config.ConfigInstance.Channels.AutoVoiceCategory && beforeChannel.ParentID != config.ConfigInstance.Channels.TeamCategory &&
+			beforeChannel.ParentID != config.ConfigInstance.Channels.AdminCategory {
 			return
 		}
 

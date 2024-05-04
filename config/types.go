@@ -25,6 +25,7 @@ type channels struct {
 	TicketArchivedCategory string `json:"ticketArchivedCategory"`
 	TicketOpenCategory     string `json:"ticketOpenCategory"`
 	TicketChannel          string `json:"ticketChannel"`
+	AdminCategory          string `json:"adminCategory"`
 }
 
 type roles struct {
