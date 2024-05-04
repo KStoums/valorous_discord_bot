@@ -13,6 +13,7 @@ type channels struct {
 	RulesChannel           string `json:"rulesChannel"`
 	AutoVoiceChannel       string `json:"autoVoiceChannel"`
 	AutoVoiceChannelTeam   string `json:"autoVoiceChannelTeam"`
+	AutoVoiceChannelAdmin  string `json:"autoVoiceChannelAdmin"`
 	TeamCategory           string `json:"teamCategory"`
 	AutoVoiceCategory      string `json:"autoVoiceCategory"`
 	AutoRoleRankedChannel  string `json:"autoRoleRankedChannel"`

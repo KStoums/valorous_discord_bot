@@ -11,7 +11,7 @@ import (
 
 func VoiceStateUpdateEvent(s *discordgo.Session, v *discordgo.VoiceStateUpdate) {
 	switch v.ChannelID {
-	case config.ConfigInstance.Channels.AutoVoiceChannel, config.ConfigInstance.Channels.AutoVoiceChannelTeam:
+	case config.ConfigInstance.Channels.AutoVoiceChannel, config.ConfigInstance.Channels.AutoVoiceChannelTeam, config.ConfigInstance.Channels.AutoVoiceChannelAdmin:
 		autoVoiceChannel, err := s.Channel(v.ChannelID)
 		if err != nil {
 			log.Logger.Error(err)
