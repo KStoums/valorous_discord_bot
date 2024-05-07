@@ -19,12 +19,12 @@ type Agent struct {
 	IsPlayableCharacter       bool            `json:"isPlayableCharacter"`
 	IsAvailableForTest        bool            `json:"isAvailableForTest"`
 	IsBaseContent             bool            `json:"isBaseContent"`
-	Role                      Role            `json:"role"`
-	RecruitmentData           RecruitmentData `json:"recruitmentData"`
-	Abilities                 []Ability       `json:"abilities"`
+	Role                      role            `json:"role"`
+	RecruitmentData           recruitmentData `json:"recruitmentData"`
+	Abilities                 []ability       `json:"abilities"`
 }
 
-type Role struct {
+type role struct {
 	UUID        string `json:"uuid"`
 	DisplayName string `json:"displayName"`
 	Description string `json:"description"`
@@ -32,27 +32,27 @@ type Role struct {
 	AssetPath   string `json:"assetPath"`
 }
 
-type VoiceLine struct {
+type voiceLine struct {
 	MinDuration float32 `json:"minDuration"`
 	MaxDuration float32 `json:"maxDuration"`
 }
 
-type Media struct {
+type media struct {
 	ID    int32  `json:"id"`
 	Wwise string `json:"wwise"`
 	Wave  string `json:"wave"`
 }
 
-type Ability struct {
+type ability struct {
 	Slot        string    `json:"slot"`
 	DisplayName string    `json:"displayName"`
 	Description string    `json:"description"`
 	DisplayIcon string    `json:"displayIcon"`
-	VoiceLine   VoiceLine `json:"voiceLine"`
-	MediaList   []Media   `json:"mediaList"`
+	VoiceLine   voiceLine `json:"voiceLine"`
+	MediaList   []media   `json:"mediaList"`
 }
 
-type RecruitmentData struct {
+type recruitmentData struct {
 	CounterID              string `json:"counterId"`
 	MilestoneID            string `json:"milestoneId"`
 	MilestoneThreshold     int32  `json:"milestoneThreshold"`

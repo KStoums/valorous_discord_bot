@@ -18,15 +18,15 @@ type Map struct {
 	YMultiplier           float32   `json:"yMultiplier"`
 	XScalarToAdd          float32   `json:"xScalarToAdd"`
 	YScalarToAdd          float32   `json:"yScalarToAdd"`
-	Callouts              []Callout `json:"callouts"`
+	Callouts              []callout `json:"callouts"`
 }
 
-type LocalizedString struct {
+type localizedString struct {
 	Default string `json:"default"`
 	// Add other localized fields as needed
 }
 
-type Callout struct {
+type callout struct {
 	RegionName      string `json:"regionName"`
 	SuperRegionName string `json:"superRegionName"`
 	Location        struct {

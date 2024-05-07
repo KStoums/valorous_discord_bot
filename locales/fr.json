@@ -87,18 +87,29 @@
     "closed_ticket_logs_description": "{{ .member }} vient de clôturer un ticket. (**{{ .ticketChannelName}}**)"
   },
   "weapon": {
-    "command_description": "Permet de voir les statistiques d'une arme présente dans Valorant",
+    "command_description": "Permets de voir les statistiques d'une arme présente dans Valorant",
     "weapon_args": "Choisissez une arme afin de voir ses statistiques",
     "weapon_title": "Arme {{ .weaponName }}"
   },
   "map": {
-    "command_description": "Permet de voir les maps présente sur Valorant ainsi que quelques informations",
+    "command_description": "Permets de voir les maps présente sur Valorant ainsi que quelques informations",
     "map_args": "Choisissez une map afin de la voir et y avoir quelques informations",
     "map_title": "Map {{ .mapName }}"
   },
   "agent": {
-    "command_description": "Permet de voir les agents présent dans Valorant ainsi que leurs caractéristiques",
+    "command_description": "Permets de voir les agents présent dans Valorant ainsi que leurs caractéristiques",
     "agent_args" : "Choisissez un agent afin de voir ses caractéristiques",
     "agent_title": "Agent {{ .agentName }} ({{ .roleName }})"
+  },
+  "game_valorant_skins": {
+    "roll_description": "Permets d'avoir un skin aléatoire présent sur Valorant afin de complété votre collection de skins",
+    "roll_response_title": "Roll de {{ .rollAuthorUsername }}",
+    "skindex_description": "Permets de voir l'ensembles des skins collectés depuis grâce au /roll",
+    "skindex_response_title": "Skindex de {{ .skindexAuthorUsername }}",
+    "skindex_response_description": "» Skins collectés: {{ .skinCount }}/{{ .valorantSkinCount }} \n\n**[!]** Ce menu est temporaire et se verra rework dans les semaines à venir...",
+    "errors": {
+      "title": "Une erreur est survenue...",
+      "not_in_bot_command_channel_description": "Vous devez être dans un channel dédié aux commandes de bots pour utiliser cette commande."
+    }
   }
 }
