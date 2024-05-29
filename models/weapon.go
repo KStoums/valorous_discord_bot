@@ -5,11 +5,11 @@ type Weapon struct {
 	DisplayName string      `json:"displayName"`
 	Category    string      `json:"category"`
 	DisplayIcon string      `json:"displayIcon"`
-	WeaponStats WeaponStats `json:"weaponStats"`
-	ShopData    ShopData    `json:"shopData"`
+	WeaponStats weaponStats `json:"weaponStats"`
+	ShopData    shopData    `json:"shopData"`
 }
 
-type WeaponStats struct {
+type weaponStats struct {
 	FireRate            float64 `json:"fireRate"`
 	MagazineSize        int     `json:"magazineSize"`
 	RunSpeedMultiplier  float64 `json:"runSpeedMultiplier"`
@@ -39,29 +39,20 @@ type WeaponStats struct {
 	} `json:"damageRanges"`
 }
 
-type GridPosition struct {
+type gridPosition struct {
 	Row    int `json:"row"`
 	Column int `json:"column"`
 }
 
-type ShopData struct {
+type shopData struct {
 	Cost              int          `json:"cost"`
 	Category          string       `json:"category"`
 	ShopOrderPriority int          `json:"shopOrderPriority"`
 	CategoryText      string       `json:"categoryText"`
-	GridPosition      GridPosition `json:"gridPosition"`
+	GridPosition      gridPosition `json:"gridPosition"`
 	CanBeTrashed      bool         `json:"canBeTrashed"`
 	Image             *string      `json:"image"`
 	NewImage          string       `json:"newImage"`
 	NewImage2         *string      `json:"newImage2"`
 	AssetPath         string       `json:"assetPath"`
-}
-
-type Level struct {
-	UUID          string  `json:"uuid"`
-	DisplayName   string  `json:"displayName"`
-	LevelItem     *string `json:"levelItem"`
-	DisplayIcon   string  `json:"displayIcon"`
-	StreamedVideo *string `json:"streamedVideo"`
-	AssetPath     string  `json:"assetPath"`
 }
