@@ -25,11 +25,12 @@ func (t *TaskManager) RunTasks() {
 	c := cron.New(cron.WithSeconds())
 
 	for _, task := range t.tasks {
-		if _, err := c.AddFunc(task.CronString(), func() {
+		taskk := task
+		if _, err := c.AddFunc(taskk.CronString(), func() {
 			if t.debug {
-				log.Logger.Debug("Running task: ", task.Name())
+				log.Logger.Debug("Running task: ", taskk.Name())
 			}
-			task.Run()
+			taskk.Run()
 		}); err != nil {
 			log.Logger.Error("Could not add auto voice task to cron: ", err)
 			return
