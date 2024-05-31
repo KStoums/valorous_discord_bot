@@ -49,7 +49,7 @@ func (a *AddRolls) Run() {
 }
 
 func (a *AddRolls) CronString() string {
-	return "0 0 * * *"
+	return "0 0 0 * * *"
 }
 
 func (a *AddRolls) Name() string {
