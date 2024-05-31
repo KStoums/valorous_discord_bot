@@ -46,7 +46,7 @@ func CreateAutoRoleRankedEmbed(s *discordgo.Session) {
 		SetColor(embed.VALOROUS).
 		SetDefaultFooter().
 		SetCurrentTimestamp().
-		SetThumbnail("https://zupimages.net/up/24/14/malz.png").
+		SetThumbnail("https://zupimages.net/up/24/22/79cm.png").
 		ToMessageEmbeds())
 	if err != nil {
 		log.Logger.Error(err)

@@ -16,7 +16,8 @@ func StartMongoDb() error {
 	if err != nil {
 		return err
 	}
-	defer mongoClient.Disconnect(ctx)
+	// TODO FIX THAT TO DISCONNECT MONGO CLIENT
+	//defer mongoClient.Disconnect(ctx)
 
 	err = mongoClient.Ping(ctx, nil)
 	if err != nil {

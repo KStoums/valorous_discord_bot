@@ -31,7 +31,7 @@ func CreateRuleEmbed(s *discordgo.Session) {
 			Embeds: embed.New().
 				SetTitle(i18n.Get(discordgo.French, "rules.rules_title")).
 				SetDescription(i18n.Get(discordgo.French, "rules.rules_description")).
-				SetThumbnail("https://zupimages.net/up/24/13/ltt3.png").
+				SetThumbnail("https://zupimages.net/up/24/22/79cm.png").
 				SetCurrentTimestamp().
 				SetDefaultFooter().
 				SetColor(embed.VALOROUS).

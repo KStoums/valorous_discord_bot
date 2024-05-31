@@ -35,6 +35,7 @@ func ClearCommand() commands.SlashCommand {
 							SetColor(embed.VALOROUS).
 							SetCurrentTimestamp().
 							SetDefaultFooter().
+							SetThumbnail("https://zupimages.net/up/24/22/u2e8.png").
 							ToMessageEmbeds(),
 						Flags: discordgo.MessageFlagsEphemeral,
 					},
@@ -77,6 +78,7 @@ func ClearCommand() commands.SlashCommand {
 								"messageCount": messageCountToDelete,
 							})).
 						SetDefaultFooter().
+						SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 						SetCurrentTimestamp().
 						SetColor(embed.VALOROUS).
 						ToMessageEmbeds(),

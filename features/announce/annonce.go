@@ -15,7 +15,7 @@ func AnnounceFeature(s *discordgo.Session, m *discordgo.MessageCreate) error {
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed.New().
 		SetTitle(i18n.Get(discordgo.French, "announce.announce_title")).
 		SetDescription(m.Message.Content).
-		SetThumbnail("https://zupimages.net/up/24/14/a3cf.png").
+		SetThumbnail("https://zupimages.net/up/24/22/79cm.png").
 		SetCurrentTimestamp().
 		SetDefaultFooter().
 		SetColor(embed.VALOROUS).

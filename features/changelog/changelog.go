@@ -15,7 +15,7 @@ func ChangelogFeature(s *discordgo.Session, m *discordgo.MessageCreate) error {
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed.New().
 		SetTitle(i18n.Get(discordgo.French, "changelog.changelog_title")).
 		SetDescription(m.Message.Content).
-		SetThumbnail("https://zupimages.net/up/24/22/e0rz.png").
+		SetThumbnail("https://zupimages.net/up/24/22/79cm.png").
 		SetCurrentTimestamp().
 		SetDefaultFooter().
 		SetColor(embed.VALOROUS).

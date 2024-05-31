@@ -34,6 +34,7 @@ func UnmuteCommand() commands.SlashCommand {
 							SetDescription(i18n.Get(discordgo.French, "moderation_commands.errors.description")).
 							SetColor(embed.VALOROUS).
 							SetCurrentTimestamp().
+							SetThumbnail("https://zupimages.net/up/24/22/u2e8.png").
 							SetDefaultFooter().
 							ToMessageEmbeds(),
 						Flags: discordgo.MessageFlagsEphemeral,
@@ -57,6 +58,7 @@ func UnmuteCommand() commands.SlashCommand {
 							SetColor(embed.VALOROUS).
 							SetCurrentTimestamp().
 							SetDefaultFooter().
+							SetThumbnail("https://zupimages.net/up/24/22/u2e8.png").
 							ToMessageEmbeds(),
 						Flags: discordgo.MessageFlagsEphemeral,
 					},
@@ -92,6 +94,7 @@ func UnmuteCommand() commands.SlashCommand {
 								})).
 							SetColor(embed.VALOROUS).
 							SetCurrentTimestamp().
+							SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 							SetDefaultFooter().
 							ToMessageEmbeds(),
 						Flags: discordgo.MessageFlagsEphemeral,
@@ -123,6 +126,7 @@ func UnmuteCommand() commands.SlashCommand {
 						SetDescription(i18n.Get(discordgo.French, "moderation_commands.errors.already_unmute")).
 						SetCurrentTimestamp().
 						SetDefaultFooter().
+						SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 						SetColor(embed.VALOROUS).
 						ToMessageEmbeds(),
 					Flags: discordgo.MessageFlagsEphemeral,

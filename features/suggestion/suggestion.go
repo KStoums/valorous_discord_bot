@@ -19,7 +19,7 @@ func SuggestionFeature(s *discordgo.Session, m *discordgo.MessageCreate) error {
 		SetColor(embed.VALOROUS).
 		SetDefaultFooter().
 		SetCurrentTimestamp().
-		SetThumbnail(m.Author.AvatarURL("")).
+		SetThumbnail("https://zupimages.net/up/24/22/oo4p.png").
 		ToMessageEmbed())
 	if err != nil {
 		return err

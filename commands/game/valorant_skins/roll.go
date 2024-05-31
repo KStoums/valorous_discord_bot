@@ -34,6 +34,7 @@ func RollCommand() commands.SlashCommand {
 							SetDescription(i18n.Get(discordgo.French, "game_valorant_skins.errors.not_in_bot_command_channel_description")).
 							SetCurrentTimestamp().
 							SetDefaultFooter().
+							SetThumbnail("https://zupimages.net/up/24/22/n6xx.png").
 							SetColor(embed.VALOROUS).
 							ToMessageEmbeds(),
 						Flags: discordgo.MessageFlagsEphemeral,
@@ -83,6 +84,7 @@ func RollCommand() commands.SlashCommand {
 								"timeRemaining": getResetRollTimeRemaining(),
 							})).
 							SetCurrentTimestamp().
+							SetThumbnail("https://zupimages.net/up/24/22/n6xx.png").
 							SetDefaultFooter().
 							SetColor(embed.VALOROUS).
 							ToMessageEmbeds(),
@@ -106,7 +108,7 @@ func RollCommand() commands.SlashCommand {
 				SetDefaultFooter().
 				AddInlinedField("ℹ️ Skin", skins.Data[randomInt].DisplayName).
 				AddInlinedField("💎 Rareté", "❔").
-				SetThumbnail("https://zupimages.net/up/24/22/b5js.png").
+				SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 				SetImage(skins.Data[randomInt].DisplayIcon).
 				ToMessageEmbeds())
 			if err != nil {
@@ -128,7 +130,7 @@ func RollCommand() commands.SlashCommand {
 									"timeRemaining": getResetRollTimeRemaining(),
 								})).
 								SetColor(embed.VALOROUS).
-								SetThumbnail("https://zupimages.net/up/24/22/0jcs.png").
+								SetThumbnail("https://zupimages.net/up/24/22/u2e8.png").
 								SetCurrentTimestamp().
 								SetDefaultFooter().
 								ToMessageEmbeds(),
@@ -168,7 +170,7 @@ func RollCommand() commands.SlashCommand {
 						})).
 						SetColor(embed.VALOROUS).
 						SetCurrentTimestamp().
-						SetThumbnail("https://zupimages.net/up/24/22/fgqy.png").
+						SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 						SetDefaultFooter().
 						ToMessageEmbeds(),
 					Flags: discordgo.MessageFlagsEphemeral,

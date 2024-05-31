@@ -32,7 +32,7 @@ func ClipFeature(s *discordgo.Session, m *discordgo.MessageCreate) error {
 		SetColor(embed.VALOROUS).
 		SetDefaultFooter().
 		SetCurrentTimestamp().
-		SetThumbnail(m.Author.AvatarURL("")).
+		SetThumbnail("https://zupimages.net/up/24/22/79cm.png").
 		SetVideo(m.Message.Content).
 		SetImage(m.Message.Embeds[0].Thumbnail.URL).
 		ToMessageEmbed(),

@@ -52,6 +52,7 @@ func SkinDexCommand() commands.SlashCommand {
 							SetDescription(i18n.Get(discordgo.French, "game_valorant_skins.errors.not_in_bot_command_channel_description")).
 							SetCurrentTimestamp().
 							SetDefaultFooter().
+							SetThumbnail("https://zupimages.net/up/24/22/n6xx.png").
 							SetColor(embed.VALOROUS).
 							ToMessageEmbeds(),
 						Flags: discordgo.MessageFlagsEphemeral,
@@ -97,7 +98,7 @@ func SkinDexCommand() commands.SlashCommand {
 						SetCurrentTimestamp().
 						SetDefaultFooter().
 						SetColor(embed.VALOROUS).
-						SetThumbnail("https://zupimages.net/up/24/22/b5js.png").
+						SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 						SetImage("https://admin.esports.gg/wp-content/uploads/2023/12/VALORANT-Overdrive-bundle.jpg").
 						ToMessageEmbeds(),
 				},

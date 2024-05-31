@@ -36,7 +36,7 @@ func CreateTicketEmbed(s *discordgo.Session) {
 			SetColor(embed.VALOROUS).
 			SetCurrentTimestamp().
 			SetDefaultFooter().
-			SetThumbnail("https://zupimages.net/up/24/16/itry.png").
+			SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 			ToMessageEmbeds(),
 		Components: []discordgo.MessageComponent{
 			discordgo.ActionsRow{
