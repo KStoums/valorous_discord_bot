@@ -7,6 +7,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/config"
+	"github.com/goroutine/template/database"
 	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/models"
 	"github.com/goroutine/template/utils/embed"
@@ -18,7 +19,7 @@ import (
 	"time"
 )
 
-func RollCommand(database *mongo.Database) commands.SlashCommand {
+func RollCommand() commands.SlashCommand {
 	return commands.SlashCommand{
 		Name:        "roll",
 		Description: i18n.Get(discordgo.French, "game_valorant_skins.roll_description"),
@@ -52,7 +53,7 @@ func RollCommand(database *mongo.Database) commands.SlashCommand {
 			}
 
 			ctx := context.Background()
-			collection := database.Collection(os.Getenv("GAME_VALORANT_SKINS_COLLECTION_NAME"))
+			collection := database.MongoDb.Collection(os.Getenv("GAME_VALORANT_SKINS_COLLECTION_NAME"))
 
 			var userData models.UserSkinGame
 			err = collection.FindOne(ctx, bson.D{{"_id", i.Member.User.ID}}).Decode(&userData)
@@ -191,7 +192,7 @@ func saveUserData(ctx context.Context, user models.UserSkinGame, collection *mon
 
 func getResetRollTimeRemaining() string {
 	now := time.Now()
-	midnight := time.Date(now.Year(), now.Month(), now.Day(), 23, 0, 0, 0, now.Location())
+	midnight := time.Date(now.Year(), now.Month(), now.Day(), 24, 0, 0, 0, now.Location())
 	durationUntilMidnight := midnight.Sub(now)
 	return fmt.Sprintf("%02dh %02dm %02ds", int(durationUntilMidnight.Hours()), int(durationUntilMidnight.Minutes())%60, int(durationUntilMidnight.Seconds())%60)
 }

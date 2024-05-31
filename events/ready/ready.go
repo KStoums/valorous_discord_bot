@@ -18,7 +18,7 @@ func ReadyEvent(s *discordgo.Session, r *discordgo.Ready) {
 	ticket.CreateTicketEmbed(s)
 
 	taskManager := task.NewTaskManager()
-	taskManager.AddTasks(task.NewGuildMemberCountTask(s), task.NewBotPresence(s))
+	taskManager.AddTasks(task.NewGuildMemberCountTask(s), task.NewBotPresence(s), task.NewAddRollsTask(s))
 	taskManager.RunTasks()
 
 	commands.RegisterCommands(s, r.User)

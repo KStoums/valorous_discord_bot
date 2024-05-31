@@ -18,7 +18,7 @@ func NewBotPresence(s *discordgo.Session) *BotPresence {
 	return &BotPresence{s: s}
 }
 
-func (b BotPresence) Run() {
+func (b *BotPresence) Run() {
 	members, err := b.s.GuildMembers(config.ConfigInstance.GuildId, "", 100)
 	if err != nil {
 		log.Logger.Error(errors.New("unable to get guild members : " + err.Error()))
@@ -46,14 +46,14 @@ func (b BotPresence) Run() {
 	}
 }
 
-func (b BotPresence) CronString() string {
+func (b *BotPresence) CronString() string {
 	return "@every 10s"
 }
 
-func (b BotPresence) Name() string {
+func (b *BotPresence) Name() string {
 	return "BotPresence"
 }
 
-func (b BotPresence) RunOnStart() bool {
+func (b *BotPresence) RunOnStart() bool {
 	return true
 }

@@ -8,6 +8,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/config"
+	"github.com/goroutine/template/database"
 	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/models"
 	"github.com/goroutine/template/utils/embed"
@@ -36,7 +37,7 @@ func init() {
 	valorantSkinCount = len(skins.Data)
 }
 
-func SkinDexCommand(database *mongo.Database) commands.SlashCommand {
+func SkinDexCommand() commands.SlashCommand {
 	return commands.SlashCommand{
 		Name:        "skindex",
 		Description: i18n.Get(discordgo.French, "game_valorant_skins.skindex_description"),
@@ -64,7 +65,7 @@ func SkinDexCommand(database *mongo.Database) commands.SlashCommand {
 			}
 
 			ctx := context.Background()
-			collection := database.Collection(os.Getenv("GAME_VALORANT_SKINS_COLLECTION_NAME"))
+			collection := database.MongoDb.Collection(os.Getenv("GAME_VALORANT_SKINS_COLLECTION_NAME"))
 
 			var userData *models.UserSkinGame
 			err := collection.FindOne(ctx, bson.D{{"_id", i.Member.User.ID}}).Decode(&userData)
