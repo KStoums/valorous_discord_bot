@@ -28,6 +28,7 @@ type channels struct {
 	AdminCategory          string `json:"adminCategory"`
 	BotCommand             string `json:"botCommand"`
 	BotCommandAdmin        string `json:"botCommandAdmin"`
+	BotChangelog           string `json:"botChangelog"`
 }
 
 type roles struct {

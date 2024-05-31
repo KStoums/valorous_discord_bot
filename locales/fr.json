@@ -31,6 +31,9 @@
   "announce": {
     "announce_title": "Nouvelle annonce !"
   },
+  "changelog": {
+    "changelog_title": "Nouveau changelog !"
+  },
   "moderation_commands": {
     "errors": {
       "title": "Une erreur est survenue...",
