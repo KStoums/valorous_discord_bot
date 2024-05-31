@@ -105,8 +105,8 @@ func UnmuteCommand() commands.SlashCommand {
 				//Logs
 				err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "moderation_commands.logs.unmute_description",
 					i18n.Vars{
-						"member":      i.Member.Mention(),
-						"mutedMember": target.Mention(),
+						"memberMention": i.Member.Mention(),
+						"mutedMember":   target.Mention(),
 					}))
 				if err != nil {
 					log.Logger.Error(err)

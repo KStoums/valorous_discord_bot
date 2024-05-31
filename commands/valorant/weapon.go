@@ -76,7 +76,7 @@ func WeaponCommand() commands.SlashCommand {
 				SetCurrentTimestamp().
 				SetDefaultFooter().
 				SetImage(weapon.DisplayIcon).
-				SetThumbnail("https://zupimages.net/up/24/16/yte5.png").
+				SetThumbnail("https://zupimages.net/up/24/22/b5js.png").
 				AddInlinedField("💰 Prix", strconv.Itoa(weapon.ShopData.Cost)+"$").
 				AddInlinedField("💥 Cadence", strconv.Itoa(int(weapon.WeaponStats.FireRate))+" balle(s) par seconde(s)").
 				AddInlinedField("👝 Chargeur", strconv.Itoa(weapon.WeaponStats.MagazineSize)+" balle(s)").

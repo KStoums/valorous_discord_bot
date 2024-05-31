@@ -1,7 +1,6 @@
 package models
 
 type WeaponSkin struct {
-	Status          int32    `json:"status"`
 	UUID            string   `json:"uuid"`
 	DisplayName     string   `json:"displayName"`
 	ThemeUUID       string   `json:"themeUuid"`

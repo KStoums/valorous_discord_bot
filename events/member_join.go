@@ -22,7 +22,7 @@ func MemberJoinEvent(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 			"memberCount": memberCount,
 		})).
 		SetColor(embed.VALOROUS).
-		SetThumbnail(m.AvatarURL("")).
+		SetThumbnail("https://zupimages.net/up/24/22/13rn.png").
 		SetDefaultFooter().
 		SetCurrentTimestamp().
 		ToMessageEmbeds())

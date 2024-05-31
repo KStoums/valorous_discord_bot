@@ -41,9 +41,9 @@
       "unmute_member_is_bot": "Vous ne pouvez pas levé la restriction verbale à un bot."
     },
     "logs": {
-      "clear_message_description": "{{ .member }} a supprimé **{{ .messageCount }}** messages dans le salon {{ .channelMention }}.",
-      "muted_description": "{{ .member }} a rendu muet {{ .mutedMember }}.\nRaison: {{ .muteReason }}",
-      "unmute_description": "{{ .member }} a levé la restriction verbale à {{ .mutedMember }}."
+      "clear_message_description": "{{ .memberMention }} a supprimé **{{ .messageCount }}** messages dans le salon {{ .channelMention }}.",
+      "muted_description": "{{ .memberMention }} a rendu muet {{ .mutedMember }}.\nRaison: {{ .muteReason }}",
+      "unmute_description": "{{ .memberMention }} a levé la restriction verbale à {{ .mutedMember }}."
     },
     "clear": {
       "clear_response_title": "Modération",
@@ -84,7 +84,7 @@
     "already_have_ticket_description": "Vous ne pouvez pas ouvrir un nouveau ticket car vous en avez déjà 1 d'ouvert.",
     "close_ticket_title": "Fermeture du ticket...",
     "close_ticket_description": "Fermeture du ticket dans 5 secondes...",
-    "closed_ticket_logs_description": "{{ .member }} vient de clôturer un ticket. (**{{ .ticketChannelName}}**)"
+    "closed_ticket_logs_description": "{{ .memberMention }} vient de clôturer un ticket. (**{{ .ticketChannelName}}**)"
   },
   "weapon": {
     "command_description": "Permets de voir les statistiques d'une arme présente dans Valorant",
@@ -104,9 +104,13 @@
   "game_valorant_skins": {
     "roll_description": "Permets d'avoir un skin aléatoire présent sur Valorant afin de complété votre collection de skins",
     "roll_response_title": "Roll de {{ .rollAuthorUsername }}",
+    "roll_private_response_title": "Roll",
+    "roll_private_response_already_have_description": "Dommage, vous avez déjà ce skin ! \n\nIl vous reste {{ .rollRemaining }} rolls sur 5 \n*(Récupération de vos rolls dans {{ .timeRemaining }})*",
+    "roll_private_response_new_skin_description": "Félicitations ! Ce skin a été ajouté à votre skindex ! \n\nIl vous reste {{ .rollRemaining }} rolls sur 5 \n*(Récupération de vos rolls dans {{ .timeRemaining }})*",
+    "roll_no_more_roll_title": "Roll",
+    "roll_no_more_roll_description": "Vous n'avez plus de roll. Vous récupérerais 5 rolls dans {{ .timeRemaining }} !",
     "skindex_description": "Permets de voir l'ensembles des skins collectés depuis grâce au /roll",
     "skindex_response_title": "Skindex de {{ .skindexAuthorUsername }}",
-    "skindex_response_description": "» Skins collectés: {{ .skinCount }}/{{ .valorantSkinCount }} \n\n**[!]** Ce menu est temporaire et se verra rework dans les semaines à venir...",
     "errors": {
       "title": "Une erreur est survenue...",
       "not_in_bot_command_channel_description": "Vous devez être dans un channel dédié aux commandes de bots pour utiliser cette commande."

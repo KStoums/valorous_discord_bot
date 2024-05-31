@@ -97,7 +97,7 @@ func ClearCommand() commands.SlashCommand {
 
 			err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "moderation_commands.logs.clear_message_description",
 				i18n.Vars{
-					"member":         i.Member.Mention(),
+					"memberMention":  i.Member.Mention(),
 					"messageCount":   messageCountToDelete,
 					"channelMention": channel.Mention(),
 				}))

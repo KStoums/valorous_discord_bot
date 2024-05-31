@@ -57,7 +57,7 @@ func (c *CloseTicketFeature) Handler(s *discordgo.Session, i *discordgo.Interact
 	}
 
 	err = utils.SendLogToDiscordLogChannel(s, i18n.Get(discordgo.French, "ticket.closed_ticket_logs_description", i18n.Vars{
-		"member":            i.Member.Mention(),
+		"memberMention":     i.Member.Mention(),
 		"ticketChannelName": ticketChannel.Name,
 	}))
 	if err != nil {

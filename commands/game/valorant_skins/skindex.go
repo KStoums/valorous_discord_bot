@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"github.com/goroutine/template/commands"
 	"github.com/goroutine/template/config"
@@ -11,8 +12,10 @@ import (
 	"github.com/goroutine/template/models"
 	"github.com/goroutine/template/utils/embed"
 	i18n "github.com/kaysoro/discordgo-i18n"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"net/http"
+	"os"
 )
 
 const valorantApiWeaponSkinsUrl = "https://valorant-api.com/v1/weapons/skins"
@@ -61,13 +64,13 @@ func SkinDexCommand(database *mongo.Database) commands.SlashCommand {
 			}
 
 			ctx := context.Background()
-			collection := database.Collection("game_valorant_skins")
+			collection := database.Collection(os.Getenv("GAME_VALORANT_SKINS_COLLECTION_NAME"))
 
-			var userData *models.GameValorantSkins
-			err := collection.FindOne(ctx, models.GameValorantSkins{UserId: i.Member.User.ID}).Decode(&userData)
+			var userData *models.UserSkinGame
+			err := collection.FindOne(ctx, bson.D{{"_id", i.Member.User.ID}}).Decode(&userData)
 			if err != nil {
 				if errors.Is(err, mongo.ErrNoDocuments) {
-					newUser := &models.GameValorantSkins{UserId: i.Member.User.ID}
+					newUser := &models.UserSkinGame{UserId: i.Member.User.ID, RollRemaining: 5}
 
 					_, err = collection.InsertOne(ctx, newUser)
 					if err != nil {
@@ -89,14 +92,12 @@ func SkinDexCommand(database *mongo.Database) commands.SlashCommand {
 						SetTitle(i18n.Get(discordgo.French, "game_valorant_skins.skindex_response_title", i18n.Vars{
 							"skindexAuthorUsername": i.Member.User.GlobalName,
 						})).
-						SetDescription(i18n.Get(discordgo.French, "game_valorant_skins.skindex_response_description", i18n.Vars{
-							"skinCount":         len(userData.SkinsCollectedName),
-							"valorantSkinCount": valorantSkinCount,
-						})).
+						AddInlinedField("📦 Skins collectés", fmt.Sprintf("%d/%d", len(userData.SkinsCollectedName), valorantSkinCount)).
 						SetCurrentTimestamp().
 						SetDefaultFooter().
 						SetColor(embed.VALOROUS).
-						SetThumbnail("https://zupimages.net/up/24/16/yte5.png").
+						SetThumbnail("https://zupimages.net/up/24/22/b5js.png").
+						SetImage("https://admin.esports.gg/wp-content/uploads/2023/12/VALORANT-Overdrive-bundle.jpg").
 						ToMessageEmbeds(),
 				},
 			})
