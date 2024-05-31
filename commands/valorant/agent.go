@@ -4,6 +4,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/goccy/go-json"
 	"github.com/goroutine/template/commands"
+	"github.com/goroutine/template/config"
 	"github.com/goroutine/template/log"
 	"github.com/goroutine/template/models"
 	"github.com/goroutine/template/utils/embed"
@@ -49,6 +50,28 @@ func AgentCommand() commands.SlashCommand {
 			},
 		),
 		Handler: func(s *discordgo.Session, i *discordgo.InteractionCreate) {
+			if i.ChannelID != config.ConfigInstance.Channels.BotCommand && i.ChannelID != config.ConfigInstance.Channels.BotCommandAdmin {
+				err := s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
+					Type: discordgo.InteractionResponseChannelMessageWithSource,
+					Data: &discordgo.InteractionResponseData{
+						Embeds: embed.New().
+							SetTitle(i18n.Get(discordgo.French, "game_valorant_skins.errors.title")).
+							SetDescription(i18n.Get(discordgo.French, "game_valorant_skins.errors.not_in_bot_command_channel_description")).
+							SetCurrentTimestamp().
+							SetDefaultFooter().
+							SetThumbnail("https://zupimages.net/up/24/22/n6xx.png").
+							SetColor(embed.VALOROUS).
+							ToMessageEmbeds(),
+						Flags: discordgo.MessageFlagsEphemeral,
+					},
+				})
+				if err != nil {
+					log.Logger.Error(err)
+					return
+				}
+				return
+			}
+
 			agentName := i.ApplicationCommandData().Options[0].StringValue()
 
 			agents, err := requestAgentApi()
