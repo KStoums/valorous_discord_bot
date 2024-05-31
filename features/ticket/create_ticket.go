@@ -34,6 +34,7 @@ func (c *CreateTicketFeature) Handler(s *discordgo.Session, i *discordgo.Interac
 					SetDescription(i18n.Get(discordgo.French, "ticket.already_have_ticket_description")).
 					SetColor(embed.VALOROUS).
 					SetCurrentTimestamp().
+					SetThumbnail("https://zupimages.net/up/24/22/4vnp.png").
 					SetDefaultFooter().
 					ToMessageEmbeds(),
 				Flags: discordgo.MessageFlagsEphemeral,
@@ -111,6 +112,7 @@ func (c *CreateTicketFeature) Handler(s *discordgo.Session, i *discordgo.Interac
 				})).
 				SetCurrentTimestamp().
 				SetDefaultFooter().
+				SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 				ToMessageEmbeds(),
 			Flags: discordgo.MessageFlagsEphemeral,
 		},

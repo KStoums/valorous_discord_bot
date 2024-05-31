@@ -40,6 +40,7 @@ func (h *RuleFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
 					SetColor(embed.VALOROUS).
 					SetCurrentTimestamp().
 					SetDefaultFooter().
+					SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 					ToMessageEmbeds(),
 				Flags: discordgo.MessageFlagsEphemeral,
 			},
@@ -66,6 +67,7 @@ func (h *RuleFeature) Handler(s *discordgo.Session, i *discordgo.Interaction) {
 				SetCurrentTimestamp().
 				SetDefaultFooter().
 				SetColor(embed.VALOROUS).
+				SetThumbnail("https://zupimages.net/up/24/22/sff9.png").
 				ToMessageEmbeds(),
 			Flags: discordgo.MessageFlagsEphemeral,
 		},

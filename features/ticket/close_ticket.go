@@ -39,6 +39,7 @@ func (c *CloseTicketFeature) Handler(s *discordgo.Session, i *discordgo.Interact
 				SetTitle(i18n.Get(discordgo.French, "ticket.close_ticket_title")).
 				SetDescription(i18n.Get(discordgo.French, "ticket.close_ticket_description")).
 				SetCurrentTimestamp().
+				SetThumbnail("https://zupimages.net/up/24/22/vr0y.png").
 				SetDefaultFooter().
 				SetColor(embed.VALOROUS).
 				ToMessageEmbeds(),
