@@ -25,6 +25,13 @@ func ClipFeature(s *discordgo.Session, m *discordgo.MessageCreate) error {
 		clipPlatform = "Twitch"
 	}
 
+	var imageUrl string
+	if len(m.Message.Embeds) == 0 {
+		imageUrl = "https://zupimages.net/up/24/22/be0n.png"
+	} else {
+		imageUrl = m.Message.Embeds[0].Thumbnail.URL
+	}
+
 	clipEmbed, err := s.ChannelMessageSendEmbed(config.ConfigInstance.Channels.ClipChannel, embed.New().
 		SetTitle(i18n.Get(discordgo.French, "clip.clip_title", i18n.Vars{"authorName": m.Author.GlobalName})).
 		AddInlinedField("🎬 Plateforme", clipPlatform).
@@ -34,7 +41,7 @@ func ClipFeature(s *discordgo.Session, m *discordgo.MessageCreate) error {
 		SetCurrentTimestamp().
 		SetThumbnail("https://zupimages.net/up/24/22/79cm.png").
 		SetVideo(m.Message.Content).
-		SetImage(m.Message.Embeds[0].Thumbnail.URL).
+		SetImage(imageUrl).
 		ToMessageEmbed(),
 	)
 	if err != nil {
